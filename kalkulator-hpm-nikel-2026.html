@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HPM Nickel Calculator | Mining Calculator | One Portal Data</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --calc-surface: rgba(30,20,0,0.75);
+      --calc-border: rgba(245,168,0,0.18);
+      --calc-gold: #F5A800;
+      --calc-gold-dk: #c88200;
+      --calc-red: #e05555;
+      --calc-radius: 10px;
+      --calc-radius-lg: 16px;
+      --calc-shadow: 0 2px 8px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3);
+      --mono: 'DM Mono', monospace;
+      --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23F5A800' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #0d0800;
+      color: #fff;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .breadcrumb {
+      padding: 100px 48px 0;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--calc-gold); }
+    .breadcrumb .sep { color: rgba(255,255,255,0.2); }
+    .breadcrumb .current { color: var(--calc-gold); }
+
+    .calc-hero {
+      padding: 32px 48px 60px;
+      background: linear-gradient(135deg, #1a1200 0%, #0d0800 50%, #111111 100%);
+      border-bottom: 1px solid rgba(245,168,0,0.15);
+    }
+    .calc-hero-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .calc-hero-text .page-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .calc-hero-text h1 {
+      font-size: 3.2rem;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.1;
+      margin: 0 0 14px;
+    }
+    .calc-hero-text h1 strong { font-weight: 800; color: var(--calc-gold); }
+    .calc-hero-text .hero-sub {
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.5);
+      max-width: 520px;
+      line-height: 1.7;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .calc-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245,168,0,0.12);
+      border: 1px solid rgba(245,168,0,0.3);
+      border-radius: 6px;
+      padding: 10px 18px;
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--calc-gold);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .calc-body {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 48px 48px 100px;
+    }
+
+    .calc-tabs, .mode-tabs {
+      display: flex;
+      gap: 6px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--calc-border);
+      border-radius: var(--calc-radius);
+      padding: 4px;
+    }
+    .calc-tabs { margin-bottom: 12px; }
+    .mode-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .mode-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+    }
+    .calc-tab, .mode-btn {
+      flex: 1;
+      padding: 9px 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-family: 'Barlow', sans-serif;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      background: transparent;
+      color: rgba(255,255,255,0.4);
+      transition: all 0.15s;
+    }
+    .calc-tab.active, .mode-btn.active { background: var(--calc-gold); color: #000; }
+    .calc-tab:hover:not(.active), .mode-btn:hover:not(.active) { color: rgba(255,255,255,0.8); }
+
+    .formula-card, .input-card {
+      background: var(--calc-surface);
+      border: 1px solid var(--calc-border);
+      border-radius: var(--calc-radius-lg);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(8px);
+      box-shadow: var(--calc-shadow);
+    }
+    .stack-card { margin-bottom: 1rem; }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 12px;
+    }
+
+    .formula-text {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+    }
+    .formula-text .hl { color: var(--calc-gold); font-weight: 500; }
+
+    .cf-rules {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .cf-rule {
+      background: rgba(245,168,0,0.07);
+      border: 1px solid rgba(245,168,0,0.14);
+      border-radius: 8px;
+      padding: 9px 12px;
+    }
+    .cf-rule .cf-label { font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 3px; }
+    .cf-rule .cf-val { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--calc-gold); }
+
+    .calc-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .result-column {
+      position: sticky;
+      top: 24px;
+      min-width: 0;
+    }
+    .result-panel {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(245,168,0,0.12);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: var(--calc-shadow);
+    }
+
+    .compact-input {
+      display: grid;
+      grid-template-columns: 1.18fr 1fr;
+      gap: 16px;
+    }
+    .compact-box {
+      background: rgba(0,0,0,0.20);
+      border: 1px solid rgba(245,168,0,0.15);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .compact-box .section-label { margin-bottom: 14px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .field input, .field select {
+      padding: 10px 13px;
+      font-size: 14px;
+      font-family: var(--mono);
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(245,168,0,0.2);
+      border-radius: var(--calc-radius);
+      color: #fff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      width: 100%;
+    }
+    .field select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: var(--select-arrow);
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 18px;
+      padding-right: 42px;
+    }
+    .field input:focus, .field select:focus {
+      outline: none;
+      border-color: var(--calc-gold);
+      box-shadow: 0 0 0 3px rgba(245,168,0,0.12);
+    }
+    .field option { color: #000; }
+    .field .hint { font-size: 11px; color: rgba(255,255,255,0.25); }
+
+    .hma-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 14px 0 16px;
+      padding: 12px 14px;
+      border-radius: var(--calc-radius);
+      background: rgba(245,168,0,0.08);
+      border: 1px solid rgba(245,168,0,0.16);
+      color: rgba(255,255,255,0.72);
+      font-size: 12px;
+    }
+    .hma-meta strong {
+      display: block;
+      margin-top: 3px;
+      color: var(--calc-gold);
+      font-size: 13px;
+      letter-spacing: 0.3px;
+    }
+    .hma-meta-label {
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: rgba(255,255,255,0.38);
+      margin-bottom: 2px;
+    }
+
+    .cf-live {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(245,168,0,0.08);
+      border: 1px solid rgba(245,168,0,0.2);
+      border-radius: var(--calc-radius);
+      padding: 10px 16px;
+      margin-top: 14px;
+    }
+    .cf-live .cf-label-sm { font-size: 11px; color: rgba(255,255,255,0.3); margin-bottom: 2px; letter-spacing: 0.5px; }
+    .cf-live .cf-number { font-family: var(--mono); font-size: 22px; font-weight: 600; color: var(--calc-gold); }
+    .cf-live .cf-desc { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    .action-row {
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+    .action-note {
+      flex: 1 1 240px;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: var(--calc-radius);
+      border: 1px solid rgba(245,168,0,0.18);
+      background: rgba(245,168,0,0.07);
+      color: rgba(255,255,255,0.75);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .btn-calc {
+      flex: 1 1 260px;
+      padding: 14px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-family: 'Barlow', sans-serif;
+      border: 2px solid var(--calc-gold);
+      border-radius: var(--calc-radius);
+      cursor: pointer;
+      background: var(--calc-gold);
+      color: #000;
+      transition: background 0.2s, color 0.2s, transform 0.1s;
+    }
+    .btn-calc:hover { background: transparent; color: var(--calc-gold); }
+    .btn-calc:active { transform: scale(0.99); }
+    .btn-calc.btn-secondary {
+      background: transparent;
+      color: var(--calc-gold);
+    }
+    .btn-calc.btn-secondary:hover {
+      background: var(--calc-gold);
+      color: #000;
+    }
+
+    .alert {
+      border-radius: var(--calc-radius);
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-family: 'Barlow', sans-serif;
+    }
+    .alert-warning { background: rgba(245,168,0,0.1); color: var(--calc-gold); border: 1px solid rgba(245,168,0,0.25); }
+    .alert-error { background: rgba(224,85,85,0.12); color: var(--calc-red); border: 1px solid rgba(224,85,85,0.25); }
+    .alert-success { background: rgba(245,168,0,0.08); color: var(--calc-gold); border: 1px solid rgba(245,168,0,0.2); }
+    .alert-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+    .result-wrap { margin-top: 1rem; }
+    .result-hero {
+      background: linear-gradient(135deg, var(--calc-gold) 0%, var(--calc-gold-dk) 100%);
+      border-radius: var(--calc-radius-lg);
+      padding: 2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .result-hero::before {
+      content: 'HPM';
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 7rem;
+      font-weight: 900;
+      color: rgba(0,0,0,0.08);
+      letter-spacing: -4px;
+      font-family: 'Barlow', sans-serif;
+      pointer-events: none;
+    }
+    .result-hero-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(0,0,0,0.5); margin-bottom: 8px; }
+    .result-hero-val { font-size: 44px; font-weight: 700; font-family: var(--mono); letter-spacing: -0.02em; line-height: 1; color: #000; margin-bottom: 6px; }
+    .result-hero-unit { font-size: 13px; color: rgba(0,0,0,0.55); font-weight: 600; letter-spacing: 1px; }
+
+    .breakdown-card {
+      background: var(--calc-surface);
+      border: 1px solid var(--calc-border);
+      border-radius: var(--calc-radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--calc-shadow);
+      backdrop-filter: blur(8px);
+    }
+    .br-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 0;
+      font-size: 13.5px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      gap: 12px;
+    }
+    .br-row:last-child { border-bottom: none; }
+    .br-label { color: rgba(255,255,255,0.5); }
+    .br-label small { display: block; font-size: 11px; color: rgba(255,255,255,0.25); font-family: var(--mono); margin-top: 2px; }
+    .br-val { font-family: var(--mono); font-weight: 500; color: #fff; white-space: nowrap; }
+    .br-val.zero { color: rgba(255,255,255,0.25); }
+    .br-divider { border: none; border-top: 1px solid rgba(245,168,0,0.2); margin: 4px 0; }
+    .br-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0 0;
+      margin-top: 4px;
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .br-total .val { font-family: var(--mono); color: var(--calc-gold); font-size: 16px; }
+    .calc-notes { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+
+    .cf-table-card {
+      background: linear-gradient(135deg, rgba(26,18,0,0.94) 0%, rgba(13,8,0,0.97) 55%, rgba(17,17,17,0.98) 100%);
+      border: 1px solid rgba(245,168,0,0.18);
+      border-radius: 24px;
+      padding: 26px 28px;
+      box-shadow: var(--calc-shadow);
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+    .cf-table-title {
+      font-family: var(--mono);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--calc-gold);
+      margin-bottom: 26px;
+    }
+    .cf-table-head, .cf-table-row {
+      display: grid;
+      grid-template-columns: 2.2fr 0.7fr 3.8fr;
+      gap: 16px;
+      align-items: center;
+    }
+    .cf-table-head {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.58);
+      padding: 0 16px 14px;
+      border-bottom: 1px solid rgba(245,168,0,0.14);
+    }
+    .cf-table-row {
+      padding: 18px 16px;
+      border-bottom: 1px solid rgba(245,168,0,0.14);
+    }
+    .cf-table-row:last-child { border-bottom: none; }
+    .cf-comp, .cf-val-main, .cf-rule-text {
+      font-family: var(--mono);
+      font-size: 15px;
+    }
+    .cf-comp { color: rgba(255,255,255,0.82); line-height: 1.25; }
+    .cf-val-main { font-weight: 500; color: rgba(255,255,255,0.88); }
+    .cf-val-main.highlight { color: var(--calc-gold); }
+    .cf-rule-text { line-height: 1.35; color: rgba(255,255,255,0.46); }
+
+    .calc-footer {
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .calc-footer a { color: var(--calc-gold); text-decoration: none; opacity: 0.7; }
+    .calc-footer a:hover { opacity: 1; }
+
+    .pdf-report {
+      width: 210mm;
+      min-height: 297mm;
+      background: linear-gradient(135deg, #1a1200 0%, #0d0800 50%, #111111 100%);
+      color: #fff;
+      padding: 16mm;
+      box-sizing: border-box;
+    }
+    .pdf-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .pdf-title { font-size: 28px; line-height: 1.1; font-weight: 300; }
+    .pdf-title strong { color: var(--calc-gold); font-weight: 800; }
+    .pdf-badge {
+      border: 1px solid rgba(245,168,0,0.35);
+      background: rgba(245,168,0,0.12);
+      color: var(--calc-gold);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .pdf-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 12px 0;
+    }
+    .pdf-mini {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(245,168,0,0.18);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+    .pdf-mini-label {
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 6px;
+    }
+    .pdf-mini-value { font-family: var(--mono); font-size: 16px; color: #fff; }
+    .pdf-footer {
+      margin-top: 14px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 10px;
+    }
+    .pdf-report .cf-table-card {
+      box-shadow: none;
+      margin-top: 12px;
+      margin-bottom: 12px;
+      padding: 22px 24px;
+      border-radius: 22px;
+    }
+    .pdf-report .cf-table-title { font-size: 13px; margin-bottom: 20px; }
+    .pdf-report .cf-table-head { font-size: 10px; padding-bottom: 10px; }
+    .pdf-report .cf-table-row { padding: 12px 12px; }
+    .pdf-report .cf-comp,
+    .pdf-report .cf-val-main,
+    .pdf-report .cf-rule-text { font-size: 11px; }
+
+    @media (max-width: 1080px) {
+      .calc-main, .compact-input { grid-template-columns: 1fr; }
+      .result-column { position: static; }
+      .result-panel { padding: 0; background: transparent; border: none; box-shadow: none; }
+    }
+
+    @media (max-width: 768px) {
+      .breadcrumb { padding: 90px 24px 0; }
+      .calc-hero { padding: 24px 24px 40px; }
+      .calc-body { padding: 32px 24px 80px; }
+      .calc-hero-text h1 { font-size: 2.2rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .cf-table-head, .cf-table-row { grid-template-columns: 1.4fr 0.6fr 2.2fr; gap: 10px; }
+      .cf-table-card { padding: 22px 18px; border-radius: 20px; }
+      .calc-hero-inner { flex-direction: column; align-items: flex-start; }
+      .mode-row { align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-logo">One Portal Data</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="production.html">Production</a></li>
+      <li><a href="exploration.html">Exploration</a></li>
+      <li><a href="documents.html">Documents</a></li>
+      <li><a href="mining-tools.html" class="active">Mining Tools</a></li>
+      <li><a href="help.html">Help</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="mining-tools.html">Mining Tools</a>
+    <span class="sep">›</span>
+    <span class="current">HPM Nickel Calculator</span>
+  </div>
+
+  <div class="calc-hero">
+    <div class="calc-hero-inner">
+      <div class="calc-hero-text">
+        <p class="page-tag">Mining Calculator</p>
+        <h1>HPM Nickel<br><strong>Calculator</strong></h1>
+        <p class="hero-sub">Benchmark Price of Nickel Ore Minerals (HPM)<br>New Formula Kepmen ESDM No.144/2026</p>
+      </div>
+      <div class="calc-hero-badge">⚖&nbsp; Kepmen ESDM No.144 / 2026 &nbsp;·&nbsp; Berlaku 15 April 2026</div>
+    </div>
+  </div>
+
+  <div class="calc-body">
+    <div class="calc-tabs">
+      <button class="calc-tab active" type="button" onclick="switchTab('saprolite', this)">Saprolite</button>
+      <button class="calc-tab" type="button" onclick="switchTab('limonite', this)">Limonite</button>
+    </div>
+
+    <div class="mode-row">
+      <div class="mode-label">Tampilan Input</div>
+      <div class="mode-tabs">
+        <button class="mode-btn active" type="button" onclick="setMode('simple', this)">Simple</button>
+        <button class="mode-btn" type="button" onclick="setMode('expert', this)">Expert</button>
+      </div>
+    </div>
+
+    <div class="calc-main">
+      <div class="input-column">
+
+        <div class="formula-card stack-card">
+          <div class="section-label">Formula HPM Bijah Nikel — New Formula (Kepmen 144/2026)</div>
+          <div class="formula-text">
+            <span class="hl">HPM</span> = [(%Ni × CF<sub>Bijah Nikel</sub> × HMA<sub>Nikel</sub>)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (%Fe × CF<sub>Besi</sub> × HMA<sub>Bijih Besi</sub> × 100)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (%Co × CF<sub>Kobalt</sub> × HMA<sub>Kobalt</sub>)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (%Cr × CF<sub>Krom</sub> × HMA<sub>Bijih Krom</sub> × 100)] × (1−MC)
+          </div>
+          <div class="cf-rules">
+            <div class="cf-rule">
+              <div class="cf-label">CF Bijih Nikel</div>
+              <div class="cf-val">30% @1.6%Ni ± 1%/0.1%Ni</div>
+            </div>
+            <div class="cf-rule">
+              <div class="cf-label">CF Besi Ikutan</div>
+              <div class="cf-val">30% (tetap)</div>
+            </div>
+            <div class="cf-rule">
+              <div class="cf-label">CF Kobalt Ikutan</div>
+              <div class="cf-val">30% (tetap)</div>
+            </div>
+            <div class="cf-rule">
+              <div class="cf-label">CF Krom Ikutan</div>
+              <div class="cf-val">10% (tetap)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-card stack-card">
+          <div class="section-label">Input Data Utama</div>
+
+          <div class="compact-input">
+            <div class="compact-box">
+              <div class="section-label">Ore Grades & Moisture Content</div>
+
+              <div id="section-saprolite">
+                <div class="grid-2">
+                  <div class="field">
+                    <label>%Ni (kadar nikel)</label>
+                    <input type="number" id="ni" value="1.80" step="0.01" min="0" max="10" />
+                    <span class="hint">Min 1.6% untuk saprolite</span>
+                  </div>
+                  <div class="field expert-only">
+                    <label>%Fe (kadar besi)</label>
+                    <input type="number" id="fe" value="14.00" step="0.1" min="0" />
+                    <span class="hint">Dihitung jika %Fe ≤ 35%</span>
+                  </div>
+                  <div class="field expert-only">
+                    <label>%Co (kadar kobalt)</label>
+                    <input type="number" id="co" value="0.05" step="0.001" min="0" />
+                    <span class="hint">Dihitung jika %Co ≥ 0.05%</span>
+                  </div>
+                  <div class="field expert-only">
+                    <label>%Cr (kadar krom)</label>
+                    <input type="number" id="cr" value="1.00" step="0.01" min="0" />
+                  </div>
+                  <div class="field">
+                    <label>MC / Moisture Content (%)</label>
+                    <input type="number" id="mc" value="30" step="1" min="0" max="60" />
+                  </div>
+                </div>
+                <div class="cf-live">
+                  <div>
+                    <div class="cf-label-sm">CF Bijih Nikel (otomatis)</div>
+                    <div class="cf-number" id="cf-val-s">32%</div>
+                  </div>
+                  <div class="cf-desc" id="cf-desc-s">Ni = 1.8% → 30% + 2% = 32%</div>
+                </div>
+              </div>
+
+              <div id="section-limonite" style="display:none;">
+                <div class="grid-2">
+                  <div class="field">
+                    <label>%Ni (kadar nikel)</label>
+                    <input type="number" id="ni_l" value="0.90" step="0.01" min="0" max="10" />
+                    <span class="hint">Tipe limonite &lt; 1.6%</span>
+                  </div>
+                  <div class="field expert-only">
+                    <label>%Fe (kadar besi)</label>
+                    <input type="number" id="fe_l" value="35.00" step="0.1" min="0" />
+                    <span class="hint">Dihitung jika %Fe ≤ 35%</span>
+                  </div>
+                  <div class="field expert-only">
+                    <label>%Co (kadar kobalt)</label>
+                    <input type="number" id="co_l" value="0.08" step="0.001" min="0" />
+                    <span class="hint">Dihitung jika %Co ≥ 0.05%</span>
+                  </div>
+                  <div class="field expert-only">
+                    <label>%Cr (kadar krom)</label>
+                    <input type="number" id="cr_l" value="0.50" step="0.01" min="0" />
+                  </div>
+                  <div class="field">
+                    <label>MC / Moisture Content (%)</label>
+                    <input type="number" id="mc_l" value="35" step="1" min="0" max="60" />
+                  </div>
+                </div>
+                <div class="cf-live">
+                  <div>
+                    <div class="cf-label-sm">CF Bijih Nikel (otomatis)</div>
+                    <div class="cf-number" id="cf-val-l">23%</div>
+                  </div>
+                  <div class="cf-desc" id="cf-desc-l">Ni = 0.9% → 30% − 7% = 23%</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="compact-box">
+              <div class="section-label">HMA — Harga Mineral Acuan</div>
+
+              <div class="grid-2">
+                <div class="field">
+                  <label>Bulan HMA</label>
+                  <select id="hma_month"></select>
+                  <span class="hint">Pilih bulan HMA untuk perhitungan</span>
+                </div>
+                <div class="field">
+                  <label>Periode HMA</label>
+                  <select id="hma_period"></select>
+                  <span class="hint">Pilihan akan mengisi HMA otomatis</span>
+                </div>
+              </div>
+
+              <div class="hma-meta">
+                <div>
+                  <span class="hma-meta-label">Pilihan Aktif</span>
+                  <strong id="hma_selected_label">April 2026 (Periode Kedua)</strong>
+                </div>
+                <div>
+                  <span class="hma-meta-label">Sumber Data</span>
+                  <span id="hma_source_label">Spreadsheet HMA</span>
+                </div>
+              </div>
+
+              <div class="grid-2">
+                <div class="field expert-only">
+                  <label>HMA Nikel</label>
+                  <input type="number" id="hma_ni" value="16933.57" step="0.01" min="0" />
+                </div>
+                <div class="field expert-only">
+                  <label>HMA Kobalt</label>
+                  <input type="number" id="hma_co" value="55852.86" step="0.01" min="0" />
+                </div>
+                <div class="field expert-only">
+                  <label>HMA Bijih Besi</label>
+                  <input type="number" id="hma_fe" value="1.58" step="0.01" min="0" />
+                  <span class="hint">Nilai raw, dikali 100 dalam formula</span>
+                </div>
+                <div class="field expert-only">
+                  <label>HMA Bijih Krom</label>
+                  <input type="number" id="hma_cr" value="6.37" step="0.01" min="0" />
+                  <span class="hint">Nilai raw, dikali 100 dalam formula</span>
+                </div>
+              </div>
+
+              <div class="cf-live">
+                <div>
+                  <div class="cf-label-sm">Ringkasan HMA Aktif</div>
+                  <div class="cf-number" id="hma-compact-ni">Ni 16.933,57</div>
+                </div>
+                <div class="cf-desc" id="hma-compact-desc">Co 55.852,86 · Fe 1,58 · Cr 6,37</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cf-table-card stack-card">
+          <div class="cf-table-title">Corrective Factors - New HPM Kepmen 144/2026</div>
+          <div class="cf-table-head">
+            <div>Component</div>
+            <div>CF</div>
+            <div>Ketentuan</div>
+          </div>
+          <div class="cf-table-row">
+            <div class="cf-comp">Nikel</div>
+            <div class="cf-val-main highlight" id="cf-table-ni">30.0%</div>
+            <div class="cf-rule-text">Base 30% @ 1.6% Ni · ±1% per 0.1% Ni</div>
+          </div>
+          <div class="cf-table-row">
+            <div class="cf-comp">Besi ikutan</div>
+            <div class="cf-val-main">30%</div>
+            <div class="cf-rule-text" id="cf-table-fe-rule">Fixed 30% — Fe ≤ 35%</div>
+          </div>
+          <div class="cf-table-row">
+            <div class="cf-comp">Kobalt<br />ikutan</div>
+            <div class="cf-val-main">30%</div>
+            <div class="cf-rule-text" id="cf-table-co-rule">Fixed 30% — Co ≥ 0.05%</div>
+          </div>
+          <div class="cf-table-row">
+            <div class="cf-comp">Krom ikutan</div>
+            <div class="cf-val-main">10%</div>
+            <div class="cf-rule-text">Fixed 10%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-column">
+        <div class="result-panel">
+          <div class="action-row">
+            <div class="action-note" id="action-note">Mode Simple menampilkan input minimum. Fe, Co, Cr, dan HMA manual memakai nilai yang sudah tersimpan.</div>
+            <button class="btn-calc btn-secondary" type="button" onclick="downloadPDF()">Cetak / Simpan PDF A4</button>
+          </div>
+
+          <div id="error-box"></div>
+
+          <div class="result-wrap" id="result-section">
+            <div class="result-hero">
+              <div class="result-hero-label">HPM Bijih Nikel</div>
+              <div class="result-hero-val" id="res-hpm">–</div>
+              <div class="result-hero-unit">USD / WMT (Wet Metric Ton)</div>
+            </div>
+
+            <div class="breakdown-card">
+              <div class="section-label">Rincian Perhitungan</div>
+              <div class="br-row">
+                <div class="br-label">Komponen Nikel<small id="br-ni-formula">–</small></div>
+                <div class="br-val" id="res-ni">–</div>
+              </div>
+              <div class="br-row">
+                <div class="br-label">Komponen Besi<small id="br-fe-formula">–</small></div>
+                <div class="br-val" id="res-fe">–</div>
+              </div>
+              <div class="br-row">
+                <div class="br-label">Komponen Kobalt<small id="br-co-formula">–</small></div>
+                <div class="br-val" id="res-co">–</div>
+              </div>
+              <div class="br-row">
+                <div class="br-label">Komponen Krom<small id="br-cr-formula">–</small></div>
+                <div class="br-val" id="res-cr">–</div>
+              </div>
+              <hr class="br-divider" />
+              <div class="br-row" style="border-bottom:none;">
+                <div class="br-label">Subtotal (sebelum MC)</div>
+                <div class="br-val" id="res-sub">–</div>
+              </div>
+              <div class="br-row" style="border-bottom:none;">
+                <div class="br-label">× Faktor (1 − MC)</div>
+                <div class="br-val" id="res-mc">–</div>
+              </div>
+              <hr class="br-divider" />
+              <div class="br-total">
+                <span>HPM Final</span>
+                <span class="val" id="res-final">–</span>
+              </div>
+              <div class="calc-notes" id="calc-notes"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-footer">
+      <span>Berdasarkan <a href="https://www.minerba.esdm.go.id" target="_blank">Kepmen ESDM No.144.K/MB.01/MEM.B/2026</a></span>
+      <a href="https://www.minerba.esdm.go.id/harga_acuan" target="_blank">HMA Terbaru → minerba.esdm.go.id</a>
+    </div>
+  </div>
+
+  <div id="pdf-report" class="pdf-report" style="display:none;">
+    <div class="pdf-header">
+      <div>
+        <div class="page-tag">Mining Calculator</div>
+        <div class="pdf-title">HPM Nickel<br /><strong>Calculation Report</strong></div>
+      </div>
+      <div class="pdf-badge" id="pdf-hma-label">HMA -</div>
+    </div>
+
+    <div class="result-hero" style="margin-bottom:12px;">
+      <div class="result-hero-label">HPM Bijih Nikel</div>
+      <div class="result-hero-val" id="pdf-res-hpm">-</div>
+      <div class="result-hero-unit">USD / WMT (Wet Metric Ton)</div>
+    </div>
+
+    <div class="pdf-grid">
+      <div class="pdf-mini"><div class="pdf-mini-label">Tipe Ore</div><div class="pdf-mini-value" id="pdf-ore-type">-</div></div>
+      <div class="pdf-mini"><div class="pdf-mini-label">Moisture Content</div><div class="pdf-mini-value" id="pdf-mc-value">-</div></div>
+      <div class="pdf-mini"><div class="pdf-mini-label">Ni / Fe</div><div class="pdf-mini-value" id="pdf-grade-ni-fe">-</div></div>
+      <div class="pdf-mini"><div class="pdf-mini-label">Co / Cr</div><div class="pdf-mini-value" id="pdf-grade-co-cr">-</div></div>
+    </div>
+
+    <div class="cf-table-card">
+      <div class="cf-table-title">Corrective Factors - New HPM Kepmen 144/2026</div>
+      <div class="cf-table-head">
+        <div>Component</div>
+        <div>CF</div>
+        <div>Ketentuan</div>
+      </div>
+      <div class="cf-table-row">
+        <div class="cf-comp">Nikel</div>
+        <div class="cf-val-main highlight" id="pdf-cf-table-ni">30.0%</div>
+        <div class="cf-rule-text">Base 30% @ 1.6% Ni · ±1% per 0.1% Ni</div>
+      </div>
+      <div class="cf-table-row">
+        <div class="cf-comp">Besi ikutan</div>
+        <div class="cf-val-main">30%</div>
+        <div class="cf-rule-text" id="pdf-cf-table-fe-rule">Fixed 30% — Fe ≤ 35%</div>
+      </div>
+      <div class="cf-table-row">
+        <div class="cf-comp">Kobalt<br />ikutan</div>
+        <div class="cf-val-main">30%</div>
+        <div class="cf-rule-text" id="pdf-cf-table-co-rule">Fixed 30% — Co ≥ 0.05%</div>
+      </div>
+      <div class="cf-table-row">
+        <div class="cf-comp">Krom ikutan</div>
+        <div class="cf-val-main">10%</div>
+        <div class="cf-rule-text">Fixed 10%</div>
+      </div>
+    </div>
+
+    <div class="breakdown-card">
+      <div class="section-label">Rincian Perhitungan</div>
+      <div class="br-row"><div class="br-label">Komponen Nikel<small id="pdf-br-ni-formula">-</small></div><div class="br-val" id="pdf-res-ni">-</div></div>
+      <div class="br-row"><div class="br-label">Komponen Besi<small id="pdf-br-fe-formula">-</small></div><div class="br-val" id="pdf-res-fe">-</div></div>
+      <div class="br-row"><div class="br-label">Komponen Kobalt<small id="pdf-br-co-formula">-</small></div><div class="br-val" id="pdf-res-co">-</div></div>
+      <div class="br-row"><div class="br-label">Komponen Krom<small id="pdf-br-cr-formula">-</small></div><div class="br-val" id="pdf-res-cr">-</div></div>
+      <hr class="br-divider" />
+      <div class="br-row" style="border-bottom:none;"><div class="br-label">Subtotal (sebelum MC)</div><div class="br-val" id="pdf-res-sub">-</div></div>
+      <div class="br-row" style="border-bottom:none;"><div class="br-label">× Faktor (1 − MC)</div><div class="br-val" id="pdf-res-mc">-</div></div>
+      <hr class="br-divider" />
+      <div class="br-total"><span>HPM Final</span><span class="val" id="pdf-res-final">-</span></div>
+      <div class="calc-notes" id="pdf-calc-notes"></div>
+    </div>
+
+    <div class="pdf-footer">Berdasarkan Kepmen ESDM No.144/2026 · Dataset HMA terintegrasi dari spreadsheet.</div>
+  </div>
+
+  <script>
+    let currentTab = 'saprolite';
+    let currentMode = 'simple';
+
+    const spreadsheetId = '1EybRtMlwmSb8vmDc3FHcIXggqCgqgjyF86xsEYePdFM';
+
+    const fallbackHmaDataset = [
+      { month: 'Mei 2025', period: 'Periode Pertama', nikel: 15049.23, kobalt: 33274.62, besi: 1.43, krom: 6.37 },
+      { month: 'Mei 2025', period: 'Periode Kedua', nikel: 15415.00, kobalt: 33260.77, besi: 1.44, krom: 6.37 },
+      { month: 'Juni 2025', period: 'Periode Pertama', nikel: 15405.00, kobalt: 33256.79, besi: 1.45, krom: 6.37 },
+      { month: 'Juni 2025', period: 'Periode Kedua', nikel: 15221.00, kobalt: 33235.33, besi: 1.42, krom: 6.37 },
+      { month: 'Juli 2025', period: 'Periode Pertama', nikel: 14942.67, kobalt: 32944.00, besi: 1.36, krom: 6.37 },
+      { month: 'Juli 2025', period: 'Periode Kedua', nikel: 14926.00, kobalt: 32896.00, besi: 1.35, krom: 6.37 },
+      { month: 'Agustus 2025', period: 'Periode Pertama', nikel: 15028.33, kobalt: 32894.33, besi: 1.44, krom: 6.37 },
+      { month: 'Agustus 2025', period: 'Periode Kedua', nikel: 15012.67, kobalt: 32893.33, besi: 1.48, krom: 6.37 },
+      { month: 'September 2025', period: 'Periode Pertama', nikel: 14899.64, kobalt: 32894.29, besi: 1.47, krom: 6.37 },
+      { month: 'September 2025', period: 'Periode Kedua', nikel: 15000.33, kobalt: 32897.67, besi: 1.49, krom: 6.37 },
+      { month: 'Oktober 2025', period: 'Periode Pertama', nikel: 15101.67, kobalt: 33307.67, besi: 1.55, krom: 6.37 },
+      { month: 'Oktober 2025', period: 'Periode Kedua', nikel: 15142.00, kobalt: 35151.00, besi: 1.54, krom: 6.37 },
+      { month: 'November 2025', period: 'Periode Pertama', nikel: 15075.33, kobalt: 42283.33, besi: 1.55, krom: 6.37 },
+      { month: 'November 2025', period: 'Periode Kedua', nikel: 14998.67, kobalt: 47571.00, besi: 1.54, krom: 6.37 },
+      { month: 'Desember 2025', period: 'Periode Pertama', nikel: 14666.67, kobalt: 48139.00, besi: 1.52, krom: 6.37 },
+      { month: 'Desember 2025', period: 'Periode Kedua', nikel: 14599.33, kobalt: 49112.67, besi: 1.55, krom: 6.37 },
+      { month: 'Januari 2026', period: 'Periode Pertama', nikel: 14630.00, kobalt: 52145.71, besi: 1.56, krom: 6.37 },
+      { month: 'Januari 2026', period: 'Periode Kedua', nikel: 16426.54, kobalt: 53440.00, besi: 1.58, krom: 6.37 },
+      { month: 'Februari 2026', period: 'Periode Pertama', nikel: 17774.00, kobalt: 55537.00, besi: 1.56, krom: 6.37 },
+      { month: 'Februari 2026', period: 'Periode Kedua', nikel: 17670.31, kobalt: 55838.13, besi: 1.50, krom: 6.37 },
+      { month: 'Maret 2026', period: 'Periode Pertama', nikel: 17103.67, kobalt: 55859.00, besi: 1.45, krom: 6.37 },
+      { month: 'Maret 2026', period: 'Periode Kedua', nikel: 17329.23, kobalt: 55857.69, besi: 1.44, krom: 6.37 },
+      { month: 'April 2026', period: 'Periode Pertama', nikel: 17092.67, kobalt: 55848.00, besi: 1.55, krom: 6.37 },
+      { month: 'April 2026', period: 'Periode Kedua', nikel: 16933.57, kobalt: 55852.86, besi: 1.58, krom: 6.37 }
+    ];
+
+    let hmaDataset = [...fallbackHmaDataset];
+
+    function fmt(n, dec = 2) {
+      return Number(n).toLocaleString('id-ID', {
+        minimumFractionDigits: dec,
+        maximumFractionDigits: dec
+      });
+    }
+
+    function fmtInput(n) {
+      return Number(n).toFixed(2);
+    }
+
+    function calcCF(ni) {
+      return 30 + Math.round((ni - 1.6) / 0.1);
+    }
+
+    function getActiveSuffix() {
+      return currentTab === 'limonite' ? '_l' : '';
+    }
+
+    function updateCF(side) {
+      const suffix = side === 'l' ? '_l' : '';
+      const ni = parseFloat(document.getElementById('ni' + suffix).value) || 0;
+      const cf = calcCF(ni);
+      const diff = Math.round((ni - 1.6) / 0.1);
+      const sign = diff >= 0 ? '+' : '';
+      document.getElementById('cf-val-' + side).textContent = cf + '%';
+      document.getElementById('cf-desc-' + side).textContent =
+        diff !== 0
+          ? 'Ni = ' + ni + '% → 30% ' + sign + diff + '% = ' + cf + '%'
+          : 'Ni = ' + ni + '% → basis 1.6% = 30%';
+    }
+
+    function normalizeMonthPeriodLabel(raw) {
+      const text = String(raw || '').trim().replace(/\s+/g, ' ');
+      const match = text.match(/^(.+?)\s*\((.+?)\)$/);
+      if (match) {
+        return { month: match[1].trim(), period: match[2].trim() };
+      }
+      const parts = text.split(' - ');
+      if (parts.length >= 2) {
+        return { month: parts[0].trim(), period: parts.slice(1).join(' - ').trim() };
+      }
+      return null;
+    }
+
+    function numVal(cell) {
+      if (cell == null) return NaN;
+      if (typeof cell === 'number') return cell;
+      const cleaned = String(cell).replace(/\./g, '').replace(',', '.').replace(/[^\d.-]/g, '');
+      const val = parseFloat(cleaned);
+      return Number.isFinite(val) ? val : NaN;
+    }
+
+    function cellValue(cell) {
+      if (!cell) return '';
+      if (typeof cell.v !== 'undefined' && cell.v !== null) return cell.v;
+      if (typeof cell.f !== 'undefined' && cell.f !== null) return cell.f;
+      return '';
+    }
+
+    function parseGoogleSheetResponse(text) {
+      const start = text.indexOf('{');
+      const end = text.lastIndexOf('}');
+      if (start === -1 || end === -1) return [];
+      const json = JSON.parse(text.slice(start, end + 1));
+      const rows = json.table && json.table.rows ? json.table.rows : [];
+
+      return rows.map(row => {
+        const cells = row.c || [];
+        const col0 = cellValue(cells[0]);
+        const info = normalizeMonthPeriodLabel(col0);
+        if (!info) return null;
+
+        const nikel = numVal(cellValue(cells[1]));
+        const kobalt = numVal(cellValue(cells[2]));
+        const besi = numVal(cellValue(cells[3]));
+        const krom = numVal(cellValue(cells[4]));
+
+        if (![nikel, kobalt, besi, krom].every(Number.isFinite)) return null;
+
+        return {
+          month: info.month,
+          period: info.period,
+          nikel,
+          kobalt,
+          besi,
+          krom
+        };
+      }).filter(Boolean);
+    }
+
+    async function loadHMAFromSpreadsheet() {
+      const url = 'https://docs.google.com/spreadsheets/d/' + spreadsheetId + '/gviz/tq?tqx=out:json';
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        const text = await response.text();
+        const parsed = parseGoogleSheetResponse(text);
+        if (parsed.length) {
+          hmaDataset = parsed;
+          document.getElementById('hma_source_label').textContent = 'Google Spreadsheet aktif';
+        } else {
+          document.getElementById('hma_source_label').textContent = 'Fallback dataset lokal';
+        }
+      } catch (error) {
+        document.getElementById('hma_source_label').textContent = 'Fallback dataset lokal';
+      }
+    }
+
+    function populateHMAMonths() {
+      const monthSelect = document.getElementById('hma_month');
+      const months = [...new Set(hmaDataset.map(item => item.month))];
+      monthSelect.innerHTML = months.map(month => '<option value="' + month + '">' + month + '</option>').join('');
+    }
+
+    function populateHMAPeriods(month) {
+      const periodSelect = document.getElementById('hma_period');
+      const periods = hmaDataset.filter(item => item.month === month);
+      periodSelect.innerHTML = periods.map(item => '<option value="' + item.period + '">' + item.period + '</option>').join('');
+    }
+
+    function pickDefaultSelection() {
+      const hasApril2026 = hmaDataset.some(item => item.month === 'April 2026' && item.period === 'Periode Kedua');
+      if (hasApril2026) return { month: 'April 2026', period: 'Periode Kedua' };
+      const latest = hmaDataset[hmaDataset.length - 1];
+      return latest ? { month: latest.month, period: latest.period } : { month: '', period: '' };
+    }
+
+    function applySelectedHMA() {
+      const month = document.getElementById('hma_month').value;
+      const period = document.getElementById('hma_period').value;
+      const selected = hmaDataset.find(item => item.month === month && item.period === period);
+      if (!selected) return;
+
+      document.getElementById('hma_ni').value = fmtInput(selected.nikel);
+      document.getElementById('hma_co').value = fmtInput(selected.kobalt);
+      document.getElementById('hma_fe').value = fmtInput(selected.besi);
+      document.getElementById('hma_cr').value = fmtInput(selected.krom);
+      document.getElementById('hma_selected_label').textContent = month + ' (' + period + ')';
+      document.getElementById('hma-compact-ni').textContent = 'Ni ' + fmt(selected.nikel);
+      document.getElementById('hma-compact-desc').textContent = 'Co ' + fmt(selected.kobalt) + ' · Fe ' + fmt(selected.besi) + ' · Cr ' + fmt(selected.krom);
+      calculate();
+    }
+
+    function initHMASelectors() {
+      const monthSelect = document.getElementById('hma_month');
+      const periodSelect = document.getElementById('hma_period');
+
+      populateHMAMonths();
+      const defaults = pickDefaultSelection();
+      monthSelect.value = defaults.month;
+      populateHMAPeriods(monthSelect.value);
+      periodSelect.value = defaults.period;
+      if (!periodSelect.value && periodSelect.options.length) periodSelect.selectedIndex = 0;
+      applySelectedHMA();
+
+      monthSelect.addEventListener('change', function() {
+        populateHMAPeriods(this.value);
+        if (!document.getElementById('hma_period').value && document.getElementById('hma_period').options.length) {
+          document.getElementById('hma_period').selectedIndex = 0;
+        }
+        applySelectedHMA();
+      });
+
+      periodSelect.addEventListener('change', applySelectedHMA);
+    }
+
+    function switchTab(tab, el) {
+      currentTab = tab;
+      document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('section-saprolite').style.display = tab === 'saprolite' ? '' : 'none';
+      document.getElementById('section-limonite').style.display = tab === 'limonite' ? '' : 'none';
+      document.getElementById('error-box').innerHTML = '';
+      updateCF(tab === 'saprolite' ? 's' : 'l');
+      calculate();
+    }
+
+    function setMode(mode, el) {
+      currentMode = mode;
+      document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+      if (el) el.classList.add('active');
+
+      document.querySelectorAll('.expert-only').forEach(item => {
+        item.style.display = mode === 'simple' ? 'none' : '';
+      });
+
+      document.getElementById('action-note').textContent = mode === 'simple'
+        ? 'Mode Simple menampilkan input minimum. Fe, Co, Cr, dan HMA manual memakai nilai yang sudah tersimpan.'
+        : 'Mode Expert menampilkan semua field detail dan HMA manual untuk kontrol penuh.';
+      calculate();
+    }
+
+    function syncPdfReport(data) {
+      document.getElementById('pdf-hma-label').textContent = 'HMA ' + data.selectedMonth + ' · ' + data.selectedPeriod;
+      document.getElementById('pdf-res-hpm').textContent = data.resHpm;
+      document.getElementById('pdf-res-final').textContent = data.resFinal;
+      document.getElementById('pdf-res-sub').textContent = data.resSub;
+      document.getElementById('pdf-res-mc').textContent = data.resMc;
+      document.getElementById('pdf-res-ni').textContent = data.resNi;
+      document.getElementById('pdf-res-fe').textContent = data.resFe;
+      document.getElementById('pdf-res-co').textContent = data.resCo;
+      document.getElementById('pdf-res-cr').textContent = data.resCr;
+      document.getElementById('pdf-br-ni-formula').textContent = data.brNi;
+      document.getElementById('pdf-br-fe-formula').textContent = data.brFe;
+      document.getElementById('pdf-br-co-formula').textContent = data.brCo;
+      document.getElementById('pdf-br-cr-formula').textContent = data.brCr;
+      document.getElementById('pdf-calc-notes').innerHTML = data.notes;
+      document.getElementById('pdf-ore-type').textContent = data.oreType;
+      document.getElementById('pdf-mc-value').textContent = data.mcLabel;
+      document.getElementById('pdf-grade-ni-fe').textContent = 'Ni ' + data.ni + '% · Fe ' + data.fe + '%';
+      document.getElementById('pdf-grade-co-cr').textContent = 'Co ' + data.co + '% · Cr ' + data.cr + '%';
+      document.getElementById('pdf-cf-table-ni').textContent = data.cfNiDisplay;
+      document.getElementById('pdf-cf-table-fe-rule').textContent = data.cfFeRule;
+      document.getElementById('pdf-cf-table-co-rule').textContent = data.cfCoRule;
+    }
+
+    function calculate() {
+      const suf = currentTab === 'limonite' ? '_l' : '';
+      const ni = parseFloat(document.getElementById('ni' + suf).value);
+      const fe = parseFloat(document.getElementById('fe' + suf).value);
+      const co = parseFloat(document.getElementById('co' + suf).value);
+      const cr = parseFloat(document.getElementById('cr' + suf).value);
+      const mc = parseFloat(document.getElementById('mc' + suf).value);
+      const hma_ni = parseFloat(document.getElementById('hma_ni').value);
+      const hma_co = parseFloat(document.getElementById('hma_co').value);
+      const hma_fe = parseFloat(document.getElementById('hma_fe').value);
+      const hma_cr = parseFloat(document.getElementById('hma_cr').value);
+
+      const selectedMonth = document.getElementById('hma_month').value;
+      const selectedPeriod = document.getElementById('hma_period').value;
+
+      const errBox = document.getElementById('error-box');
+      errBox.innerHTML = '';
+
+      if ([ni, fe, co, cr, mc, hma_ni, hma_co, hma_fe, hma_cr].some(v => isNaN(v) || v < 0)) {
+        errBox.innerHTML = '<div class="alert alert-error"><span class="alert-icon">✕</span>Harap isi semua field dengan angka yang valid.</div>';
+        return;
+      }
+
+      const cf_ni_pct = calcCF(ni);
+      const cf_ni = cf_ni_pct / 100;
+      const mc_frac = mc / 100;
+
+      const comp_ni = (ni / 100) * cf_ni * hma_ni;
+      const fe_active = fe <= 35;
+      const comp_fe = fe_active ? (fe / 100) * 0.30 * hma_fe * 100 : 0;
+      const co_active = co >= 0.05;
+      const comp_co = co_active ? (co / 100) * 0.30 * hma_co : 0;
+      const comp_cr = (cr / 100) * 0.10 * hma_cr * 100;
+
+      const subtotal = comp_ni + comp_fe + comp_co + comp_cr;
+      const hpm = subtotal * (1 - mc_frac);
+
+      const resHpm = fmt(hpm);
+      const resFinal = fmt(hpm) + ' USD/WMT';
+      const resSub = fmt(subtotal) + ' USD';
+      const resMc = (1 - mc_frac).toFixed(2) + ' (MC = ' + mc + '%)';
+      const resNi = fmt(comp_ni) + ' USD';
+      const brNi = '(' + ni + '/100) × ' + cf_ni_pct + '% × ' + fmt(hma_ni);
+
+      document.getElementById('res-hpm').textContent = resHpm;
+      document.getElementById('res-final').textContent = resFinal;
+      document.getElementById('res-sub').textContent = resSub;
+      document.getElementById('res-mc').textContent = resMc;
+      document.getElementById('res-ni').textContent = resNi;
+      document.getElementById('br-ni-formula').textContent = brNi;
+
+      if (fe_active) {
+        document.getElementById('res-fe').className = 'br-val';
+        document.getElementById('res-fe').textContent = fmt(comp_fe) + ' USD';
+        document.getElementById('br-fe-formula').textContent = '(' + fe + '/100) × 30% × ' + fmt(hma_fe) + ' × 100';
+      } else {
+        document.getElementById('res-fe').className = 'br-val zero';
+        document.getElementById('res-fe').textContent = '0,00 USD';
+        document.getElementById('br-fe-formula').textContent = 'Fe = ' + fe + '% > 35% → tidak dihitung';
+      }
+      const resFe = document.getElementById('res-fe').textContent;
+      const brFe = document.getElementById('br-fe-formula').textContent;
+
+      if (co_active) {
+        document.getElementById('res-co').className = 'br-val';
+        document.getElementById('res-co').textContent = fmt(comp_co) + ' USD';
+        document.getElementById('br-co-formula').textContent = '(' + co + '/100) × 30% × ' + fmt(hma_co);
+      } else {
+        document.getElementById('res-co').className = 'br-val zero';
+        document.getElementById('res-co').textContent = '0,00 USD';
+        document.getElementById('br-co-formula').textContent = 'Co = ' + co + '% < 0.05% → tidak dihitung';
+      }
+      const resCo = document.getElementById('res-co').textContent;
+      const brCo = document.getElementById('br-co-formula').textContent;
+
+      document.getElementById('res-cr').textContent = fmt(comp_cr) + ' USD';
+      document.getElementById('br-cr-formula').textContent = '(' + cr + '/100) × 10% × ' + fmt(hma_cr) + ' × 100';
+      const resCr = document.getElementById('res-cr').textContent;
+      const brCr = document.getElementById('br-cr-formula').textContent;
+
+      const cfNiDisplay = cf_ni_pct.toFixed(1) + '%';
+      const cfFeRule = fe_active ? 'Fixed 30% — Fe ≤ 35%' : 'Excluded — Fe > 35%';
+      const cfCoRule = co_active ? 'Fixed 30% — Co ≥ 0.05%' : 'Excluded — Co < 0.05%';
+
+      document.getElementById('cf-table-ni').textContent = cfNiDisplay;
+      document.getElementById('cf-table-fe-rule').textContent = cfFeRule;
+      document.getElementById('cf-table-co-rule').textContent = cfCoRule;
+
+      let notes = '<div class="alert alert-success"><span class="alert-icon">✓</span>Menggunakan HMA <strong>' + selectedMonth + ' (' + selectedPeriod + ')</strong> untuk perhitungan.</div>';
+      notes += '<div class="alert alert-success"><span class="alert-icon">✓</span>CF Bijih Nikel = <strong>' + cf_ni_pct + '%</strong> · Basis 1.6%Ni = 30%, setiap ±0.1%Ni → ±1%.</div>';
+      if (!fe_active) notes += '<div class="alert alert-warning"><span class="alert-icon">⚠</span>Fe = ' + fe + '% melebihi 35% → komponen besi dikecualikan.</div>';
+      if (!co_active) notes += '<div class="alert alert-warning"><span class="alert-icon">⚠</span>Co = ' + co + '% di bawah 0.05% → komponen kobalt dikecualikan.</div>';
+      if (currentMode === 'simple') notes += '<div class="alert alert-success"><span class="alert-icon">✓</span>Mode Simple aktif: field expert disembunyikan, namun nilai default tetap dipakai dalam perhitungan.</div>';
+      document.getElementById('calc-notes').innerHTML = notes;
+
+      syncPdfReport({
+        selectedMonth,
+        selectedPeriod,
+        resHpm,
+        resFinal,
+        resSub,
+        resMc,
+        resNi,
+        resFe,
+        resCo,
+        resCr,
+        brNi,
+        brFe,
+        brCo,
+        brCr,
+        notes,
+        oreType: currentTab === 'saprolite' ? 'Saprolite' : 'Limonite',
+        mcLabel: mc + '%',
+        ni,
+        fe,
+        co,
+        cr,
+        cfNiDisplay,
+        cfFeRule,
+        cfCoRule
+      });
+    }
+
+    function bindAutoCalculate() {
+      document.querySelectorAll('input, select').forEach(el => {
+        el.addEventListener('input', function() {
+          if (el.id === 'ni') updateCF('s');
+          if (el.id === 'ni_l') updateCF('l');
+          if (['hma_ni', 'hma_co', 'hma_fe', 'hma_cr'].includes(el.id)) {
+            document.getElementById('hma-compact-ni').textContent = 'Ni ' + fmt(document.getElementById('hma_ni').value || 0);
+            document.getElementById('hma-compact-desc').textContent =
+              'Co ' + fmt(document.getElementById('hma_co').value || 0) +
+              ' · Fe ' + fmt(document.getElementById('hma_fe').value || 0) +
+              ' · Cr ' + fmt(document.getElementById('hma_cr').value || 0);
+          }
+          calculate();
+        });
+        el.addEventListener('change', function() {
+          if (el.id === 'ni') updateCF('s');
+          if (el.id === 'ni_l') updateCF('l');
+          calculate();
+        });
+      });
+    }
+
+    function downloadPDF() {
+      calculate();
+
+      const selectedMonth = document.getElementById('hma_month').value;
+      const selectedPeriod = document.getElementById('hma_period').value;
+      const filename = 'HPM_Nickel_' + selectedMonth.replace(/\s+/g, '_') + '_' + selectedPeriod.replace(/\s+/g, '_') + '.pdf';
+      const reportHTML = document.getElementById('pdf-report').outerHTML.replace('style="display:none;"', '');
+
+      const printWindow = window.open('', '_blank', 'width=1024,height=768');
+      if (!printWindow) {
+        alert('Popup diblokir browser. Mohon izinkan popup lalu coba lagi.');
+        return;
+      }
+
+      const printDoc = `<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>${filename}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { margin: 0; padding: 0; background: #0d0800; }
+    body { font-family: 'Barlow', sans-serif; }
+    .pdf-report {
+      display:block !important;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 14mm 12mm;
+      background: linear-gradient(180deg, #140d00 0%, #0d0800 100%);
+      color: #fff;
+    }
+    .section-label, .result-hero-label, .pdf-mini-label, .cf-table-title, .cf-table-head {
+      font-size: 10px; line-height: 1.4; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,168,0,0.9);
+    }
+    .pdf-header { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:16px; }
+    .page-tag { font-size:10px; color:rgba(255,255,255,0.7); margin-bottom:6px; }
+    .pdf-title { font-size:34px; line-height:1.05; font-weight:300; color:#fff; }
+    .pdf-title strong { color:#F5A800; font-weight:800; }
+    .pdf-badge { border:1px solid rgba(245,168,0,0.35); color:#F5A800; background:rgba(245,168,0,0.12); padding:8px 12px; border-radius:8px; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+    .result-hero, .pdf-mini, .cf-table-card, .breakdown-card { background: rgba(30,20,0,0.85); border:1px solid rgba(245,168,0,0.2); border-radius:16px; }
+    .result-hero { padding:16px 18px; margin-bottom:12px; position:relative; overflow:hidden; }
+    .result-hero::before { content:'HPM'; position:absolute; right:14px; top:8px; font-size:54px; line-height:1; font-weight:900; color:rgba(0,0,0,0.12); }
+    .result-hero-val { font-family:'DM Mono', monospace; font-size:24px; font-weight:700; color:#F5A800; margin:6px 0 4px; }
+    .result-hero-unit { font-size:10px; color:rgba(255,255,255,0.75); }
+    .pdf-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px; }
+    .pdf-mini { padding:10px 12px; }
+    .pdf-mini-value, .br-val, .br-label small, .cf-val-main, .cf-rule-text, .cf-comp { font-family:'DM Mono', monospace; }
+    .pdf-mini-value { font-size:12px; color:#fff; margin-top:4px; }
+    .cf-table-card, .breakdown-card { padding:14px 16px; margin-bottom:12px; }
+    .cf-table-head, .cf-table-row { display:grid; grid-template-columns: 1.2fr 0.45fr 1.75fr; gap:12px; align-items:center; }
+    .cf-table-head { color:rgba(255,255,255,0.55); padding-bottom:8px; border-bottom:1px solid rgba(245,168,0,0.15); }
+    .cf-table-row { padding:10px 0; border-bottom:1px solid rgba(245,168,0,0.12); }
+    .cf-table-row:last-child { border-bottom:none; }
+    .cf-comp, .cf-rule-text { font-size:11px; color:rgba(255,255,255,0.88); }
+    .cf-val-main { font-size:11px; color:#fff; font-weight:700; }
+    .cf-val-main.highlight { color:#F5A800; }
+    .br-row { display:flex; justify-content:space-between; gap:10px; padding:8px 0; border-bottom:1px solid rgba(245,168,0,0.1); }
+    .br-label { font-size:11px; color:rgba(255,255,255,0.75); }
+    .br-label small { display:block; margin-top:2px; font-size:10px; color:rgba(255,255,255,0.45); }
+    .br-val { font-size:11px; color:#fff; white-space:nowrap; }
+    .br-val.zero { color:rgba(255,255,255,0.45); }
+    .br-divider { border:none; border-top:1px solid rgba(245,168,0,0.2); margin:8px 0; }
+    .br-total { display:flex; justify-content:space-between; gap:10px; padding-top:8px; font-size:13px; font-weight:700; color:#fff; }
+    .br-total .val { font-family:'DM Mono', monospace; color:#F5A800; }
+    .calc-notes { margin-top:10px; display:grid; gap:6px; }
+    .alert { border-radius:10px; padding:8px 10px; font-size:10px; line-height:1.45; border:1px solid rgba(245,168,0,0.2); background:rgba(245,168,0,0.07); color:#fff; }
+    .alert-icon { display:none; }
+    .pdf-footer { margin-top:10px; font-size:10px; color:rgba(255,255,255,0.6); text-align:center; }
+  </style>
+</head>
+<body>
+  ${reportHTML}
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.focus();
+        window.print();
+      }, 500);
+    };
+    window.onafterprint = function() {
+      setTimeout(function() { window.close(); }, 200);
+    };
+  <\/script>
+</body>
+</html>`;
+
+      printWindow.document.open();
+      printWindow.document.write(printDoc);
+      printWindow.document.close();
+    }
+
+    async function initPage() {
+      await loadHMAFromSpreadsheet();
+      initHMASelectors();
+      bindAutoCalculate();
+      updateCF('s');
+      updateCF('l');
+      setMode('simple', document.querySelector('.mode-btn.active'));
+      calculate();
+    }
+
+    initPage();
+  </script>
+</body>
+</html>
