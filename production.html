@@ -10,7 +10,7 @@
 <body>
 
   <!-- NAV -->
-    <nav class="navbar">
+  <nav class="navbar">
     <div class="nav-logo">One Portal Data</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -29,27 +29,42 @@
     <span class="current">Production</span>
   </div>
 
-
   <!-- PAGE HERO -->
   <section class="page-hero">
     <div class="page-hero-text">
-      <h1>Production</h1>
-      <p>The Production page serves as the central hub for <strong>operational monitoring</strong>, including performance dashboards, daily data input, data sources, and master data to support data-driven decision making.</p>
+      <span class="hero-tag">Operations</span>
+      <h1>Production<strong>Hub</strong></h1>
+      <p>The central hub for <strong>operational monitoring</strong> — including performance dashboards, daily data input, data sources, and master data to support data-driven decision making.</p>
     </div>
     <div class="page-hero-images">
-      <!-- Stacked folder images -->
-      <div style="position:relative; width:280px; height:340px;">
-        <div style="position:absolute; top:0; right:0; width:200px; height:220px; background: linear-gradient(135deg,#555,#222); border-radius:20px; opacity:0.8;"></div>
-        <div style="position:absolute; top:60px; right:20px; width:220px; height:230px; border-radius:20px; overflow:hidden; box-shadow:0 16px 40px rgba(0,0,0,0.6);">
-          <svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
-            <rect width="300" height="260" fill="#87CEEB"/>
-            <ellipse cx="90" cy="70" rx="45" ry="30" fill="white"/>
-            <ellipse cx="70" cy="75" rx="30" ry="22" fill="white"/>
-            <ellipse cx="115" cy="75" rx="30" ry="22" fill="white"/>
-            <ellipse cx="0" cy="250" rx="150" ry="90" fill="#4a8c3f"/>
-            <ellipse cx="150" cy="260" rx="200" ry="90" fill="#5aa64a"/>
-            <ellipse cx="300" cy="250" rx="150" ry="80" fill="#3d7a34"/>
-          </svg>
+      <div class="page-visual">
+        <div class="pv-header">
+          <span class="pv-title">Production Overview</span>
+          <span class="pv-badge">Live</span>
+        </div>
+        <div class="pv-metric">
+          <span class="pv-metric-label">Today's Output</span>
+          <span class="pv-metric-value highlight">24,820 WMT</span>
+        </div>
+        <div class="pv-metric">
+          <span class="pv-metric-label">Target Achievement</span>
+          <span class="pv-metric-value positive">▲ 96.4%</span>
+        </div>
+        <div class="pv-metric">
+          <span class="pv-metric-label">Active Equipment</span>
+          <span class="pv-metric-value">18 / 21</span>
+        </div>
+        <div class="pv-bar-group">
+          <div class="pv-bar-label">Weekly Trend</div>
+          <div class="pv-bars">
+            <div class="pv-bar h55"></div>
+            <div class="pv-bar h75"></div>
+            <div class="pv-bar h60"></div>
+            <div class="pv-bar h80"></div>
+            <div class="pv-bar h65"></div>
+            <div class="pv-bar h90 active"></div>
+            <div class="pv-bar h80 active"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -61,27 +76,9 @@
       <div class="looking-text">
         <h2>What are you looking for?</h2>
         <div class="looking-buttons">
-          <a href="dashboard.html" class="btn-dark">DASHBOARD</a>
-          <a href="#" class="btn-dark">DATA INPUTS</a>
-          <a href="#guidelines" class="btn-dark">GUIDELINES</a>
-        </div>
-      </div>
-      <div class="looking-img">
-        <div class="landscape-img">
-          <svg viewBox="0 0 500 340" xmlns="http://www.w3.org/2000/svg">
-            <rect width="500" height="340" fill="#87CEEB"/>
-            <ellipse cx="130" cy="80" rx="55" ry="36" fill="white"/>
-            <ellipse cx="105" cy="86" rx="38" ry="27" fill="white"/>
-            <ellipse cx="160" cy="86" rx="38" ry="27" fill="white"/>
-            <ellipse cx="360" cy="65" rx="45" ry="30" fill="white"/>
-            <ellipse cx="340" cy="70" rx="30" ry="22" fill="white"/>
-            <ellipse cx="385" cy="70" rx="30" ry="22" fill="white"/>
-            <ellipse cx="0" cy="320" rx="180" ry="110" fill="#4a8c3f"/>
-            <ellipse cx="180" cy="330" rx="220" ry="100" fill="#5aa64a"/>
-            <ellipse cx="400" cy="325" rx="200" ry="110" fill="#4a8c3f"/>
-            <ellipse cx="500" cy="320" rx="160" ry="100" fill="#3d7a34"/>
-            <ellipse cx="250" cy="340" rx="300" ry="90" fill="#6abf5e"/>
-          </svg>
+          <a href="dashboard.html" class="btn-dark">Dashboard</a>
+          <a href="#" class="btn-dark">Data Inputs</a>
+          <a href="#guidelines" class="btn-dark">Guidelines</a>
         </div>
       </div>
     </div>
@@ -91,66 +88,56 @@
   <section class="guidelines-section" id="guidelines">
     <div class="guide-header">
       <h2>Guidelines</h2>
-      <p>for DASHBOARD</p>
+      <p>for Dashboard</p>
     </div>
     <div class="guide-steps">
       <div class="guide-step">
-        <h4>CHOOSE COMPANY</h4>
-        <p>• Select the company entity you want to monitor from the dropdown list.</p>
+        <h4>1. Choose Company</h4>
+        <p>Select the company entity you want to monitor from the dropdown list.</p>
       </div>
-      <div class="step-arrow">➜</div>
+      <div class="step-arrow">›</div>
       <div class="guide-step">
-        <h4>CHOOSE DATE</h4>
-        <p>• Select the date range for the data period you wish to view.</p>
+        <h4>2. Choose Date</h4>
+        <p>Select the date range for the data period you wish to view.</p>
       </div>
-      <div class="step-arrow">➜</div>
+      <div class="step-arrow">›</div>
       <div class="guide-step">
-        <h4>CHOOSE SECTION</h4>
-        <p>• Navigate to the section relevant to your operational area.</p>
+        <h4>3. Choose Section</h4>
+        <p>Navigate to the section relevant to your operational area.</p>
       </div>
-      <div class="step-arrow">➜</div>
+      <div class="step-arrow">›</div>
       <div class="guide-step">
-        <h4>DOWNLOADING REPORTS</h4>
-        <p>• Export the report in your preferred format (PDF / Excel).</p>
+        <h4>4. Download Reports</h4>
+        <p>Export the report in your preferred format — PDF or Excel.</p>
       </div>
     </div>
   </section>
 
   <!-- GUIDELINES FOR DATA INPUT -->
-  <section class="guidelines-section" style="padding-top: 40px; padding-bottom: 120px;">
-    <div style="display:flex; align-items:flex-start; gap:60px;">
-      <div style="flex:1;">
-        <div class="guide-header">
-          <h2>Guidelines</h2>
-          <p>for DATA INPUT</p>
-        </div>
-        <div class="guide-steps">
-          <div class="guide-step">
-            <h4>OPEN SHARED FOLDER</h4>
-            <p>• Access the shared drive folder assigned for your division.</p>
-          </div>
-          <div class="step-arrow">➜</div>
-          <div class="guide-step">
-            <h4>OPEN IN APP</h4>
-            <p>• Open the data input file using the designated application.</p>
-          </div>
-          <div class="step-arrow">➜</div>
-          <div class="guide-step">
-            <h4>ENABLE MACROS</h4>
-            <p>• Enable macros when prompted to allow automated processes.</p>
-          </div>
-          <div class="step-arrow">➜</div>
-          <div class="guide-step">
-            <h4>FILL ALL FORMS</h4>
-            <p>• Complete all required fields accurately before submitting.</p>
-          </div>
-        </div>
+  <section class="guidelines-section guidelines-section-notop">
+    <div class="guide-header">
+      <h2>Guidelines</h2>
+      <p>for Data Input</p>
+    </div>
+    <div class="guide-steps">
+      <div class="guide-step">
+        <h4>1. Open Shared Folder</h4>
+        <p>Access the shared drive folder assigned for your division.</p>
       </div>
-      <!-- Floating folder icon right -->
-      <div style="flex:0 0 220px; margin-top:20px;">
-        <div style="width:180px; height:200px; background:linear-gradient(135deg,#555,#222); border-radius:0 28px 28px 28px; position:relative; box-shadow:0 16px 40px rgba(0,0,0,0.5);">
-          <div style="position:absolute; top:-20px; left:0; width:70px; height:24px; background:#444; border-radius:8px 8px 0 0;"></div>
-        </div>
+      <div class="step-arrow">›</div>
+      <div class="guide-step">
+        <h4>2. Open in App</h4>
+        <p>Open the data input file using the designated application.</p>
+      </div>
+      <div class="step-arrow">›</div>
+      <div class="guide-step">
+        <h4>3. Enable Macros</h4>
+        <p>Enable macros when prompted to allow automated processes.</p>
+      </div>
+      <div class="step-arrow">›</div>
+      <div class="guide-step">
+        <h4>4. Fill All Forms</h4>
+        <p>Complete all required fields accurately before submitting.</p>
       </div>
     </div>
   </section>
