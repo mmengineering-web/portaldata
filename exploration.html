@@ -10,7 +10,7 @@
 <body>
 
   <!-- NAV -->
-    <nav class="navbar">
+  <nav class="navbar">
     <div class="nav-logo">One Portal Data</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -29,61 +29,87 @@
     <span class="current">Exploration</span>
   </div>
 
-
-  <!-- EXPLORATION HERO -->
-  <section class="page-hero" style="min-height:55vh;">
-    <div style="flex:1;">
-      <p style="font-size:1.1rem; font-weight:900; letter-spacing:4px; color:var(--white); margin-bottom:0; text-transform:uppercase;">EXPLORATION</p>
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-text">
+      <span class="hero-tag">Field & Survey</span>
+      <h1>Exploration<strong>Data</strong></h1>
+      <p>Access, request, and manage <strong>geological and exploration datasets</strong>, maps, and mining information from field surveys across all concession areas.</p>
     </div>
     <div class="page-hero-images">
-      <div class="landscape-img" style="max-width:420px;">
-        <svg viewBox="0 0 500 360" xmlns="http://www.w3.org/2000/svg">
-          <rect width="500" height="360" fill="#87CEEB"/>
-          <ellipse cx="130" cy="80" rx="55" ry="36" fill="white"/>
-          <ellipse cx="105" cy="86" rx="38" ry="27" fill="white"/>
-          <ellipse cx="160" cy="86" rx="38" ry="27" fill="white"/>
-          <ellipse cx="360" cy="65" rx="45" ry="30" fill="white"/>
-          <ellipse cx="340" cy="70" rx="30" ry="22" fill="white"/>
-          <ellipse cx="385" cy="70" rx="30" ry="22" fill="white"/>
-          <ellipse cx="0" cy="340" rx="180" ry="110" fill="#4a8c3f"/>
-          <ellipse cx="180" cy="350" rx="220" ry="100" fill="#5aa64a"/>
-          <ellipse cx="400" cy="345" rx="200" ry="110" fill="#4a8c3f"/>
-          <ellipse cx="500" cy="340" rx="160" ry="100" fill="#3d7a34"/>
-          <ellipse cx="250" cy="360" rx="300" ry="90" fill="#6abf5e"/>
-        </svg>
+      <div class="page-visual">
+        <div class="pv-header">
+          <span class="pv-title">Exploration Summary</span>
+          <span class="pv-badge">2026</span>
+        </div>
+        <div class="pv-metric">
+          <span class="pv-metric-label">Active Drill Holes</span>
+          <span class="pv-metric-value highlight">142</span>
+        </div>
+        <div class="pv-metric">
+          <span class="pv-metric-label">Area Covered</span>
+          <span class="pv-metric-value">8,240 Ha</span>
+        </div>
+        <div class="pv-metric">
+          <span class="pv-metric-label">Samples Collected</span>
+          <span class="pv-metric-value positive">3,618</span>
+        </div>
+        <div class="pv-bar-group">
+          <div class="pv-bar-label">Coverage Progress</div>
+          <div class="pv-bars">
+            <div class="pv-bar h40"></div>
+            <div class="pv-bar h60"></div>
+            <div class="pv-bar h75 active"></div>
+            <div class="pv-bar h55"></div>
+            <div class="pv-bar h90 active"></div>
+            <div class="pv-bar h65"></div>
+            <div class="pv-bar h80 active"></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- REQUEST DATA SECTION -->
-  <section style="background:linear-gradient(180deg,#0d0800 0%,var(--black) 70%); padding: 80px 48px 120px;">
-    <div style="max-width:1100px;">
+  <section class="exploration-section">
+    <div class="exploration-inner">
 
-      <!-- Folder floating right -->
-      <div style="display:flex; justify-content:flex-end; margin-bottom:40px;">
-        <div style="width:200px; height:220px; background:linear-gradient(135deg,#c88000,#1a1200); border-radius:0 28px 28px 28px; position:relative; box-shadow:0 16px 40px rgba(0,0,0,0.5);">
-          <div style="position:absolute;top:-22px;left:0;width:80px;height:26px;background:#b87000;border-radius:10px 10px 0 0;"></div>
-        </div>
-      </div>
-
-      <div class="exploration-text">
+      <p class="section-label">Data Access</p>
+      <div class="exploration-text exploration-header">
         <h2>Request your<br>exploration data</h2>
         <div class="exploration-buttons">
-          <a href="#" class="btn-dark-rounded">REQUEST EXPLORATION DATA</a>
-          <a href="#" class="btn-dark-rounded">REQUEST MAPS</a>
-          <a href="#" class="btn-dark-rounded">REQUEST MINING DATA</a>
+          <a href="#" class="btn-dark-rounded">Request Exploration Data</a>
+          <a href="#" class="btn-dark-rounded">Request Maps</a>
+          <a href="#" class="btn-dark-rounded">Request Mining Data</a>
         </div>
       </div>
 
+      <div class="explore-cards">
+
+        <div class="explore-card">
+          <div class="explore-card-icon">🗺</div>
+          <h3>Exploration Data</h3>
+          <p>Drill hole results, geological logs, assay data, and resource estimation files organized by concession block.</p>
+          <div class="explore-card-cta">Request Access →</div>
+        </div>
+
+        <div class="explore-card">
+          <div class="explore-card-icon">📍</div>
+          <h3>Maps</h3>
+          <p>Topographic, geological, and pit layout maps in various scales. Available in PDF and GIS-compatible formats.</p>
+          <div class="explore-card-cta">Request Access →</div>
+        </div>
+
+        <div class="explore-card">
+          <div class="explore-card-icon">⛏</div>
+          <h3>Mining Data</h3>
+          <p>Ore body delineation, block models, pit design files, and mine planning data for licensed concession areas.</p>
+          <div class="explore-card-cta">Request Access →</div>
+        </div>
+
+      </div>
     </div>
   </section>
-
-  <!-- BOTTOM DECORATIVE FOLDERS -->
-  <div style="background:var(--black); padding: 0 48px 80px; display:flex; gap:40px;">
-    <div style="width:160px; height:180px; background:linear-gradient(135deg,#c88000,#1a1200); border-radius:0 24px 24px 24px; position:relative; opacity:0.7;">
-      <div style="position:absolute;top:-18px;left:0;width:60px;height:20px;background:#b87000;border-radius:8px 8px 0 0;"></div>
-    </div>
-  </div>
 
 </body>
 </html>
