@@ -8,8 +8,54 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet"/>
 </head>
 <body>
+  <button class="op-sidebar-toggle" id="opSidebarToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <aside class="op-sidebar" id="opSidebar" aria-label="Main navigation">
+    <div class="op-sidebar-brand">
+      <div class="op-brand-mark">OP</div>
+      <div class="op-brand-copy"><strong>One Portal</strong><small>Data Navigation</small></div>
+    </div>
+    <nav class="op-sidebar-nav" aria-label="Primary navigation">
+      <div class="op-nav-group" data-group="home">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">H</span><em>Home</em></button>
+        <div class="op-nav-children">
+          <a href="index.html" class="op-nav-child" data-nav="home"><span></span><em>Main Menu</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="production">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">P</span><em>Production</em></button>
+        <div class="op-nav-children">
+          <a href="dashboard.html" class="op-nav-child" data-nav="dashboard"><span></span><em>Dashboard</em></a>
+          <a href="production.html#data-input" class="op-nav-child" data-nav="data-input"><span></span><em>Data Inputs</em></a>
+          <a href="production.html#guidelines" class="op-nav-child" data-nav="guideline"><span></span><em>Guideline</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="exploration">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">E</span><em>Exploration</em></button>
+        <div class="op-nav-children">
+          <a href="exploration.html#request-data" class="op-nav-child" data-nav="request-data"><span></span><em>Request Data</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="documents">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">D</span><em>Documents</em></button>
+        <div class="op-nav-children">
+          <a href="documents.html#reports" class="op-nav-child" data-nav="reports"><span></span><em>Reports</em></a>
+          <a href="documents.html#sops" class="op-nav-child" data-nav="sops"><span></span><em>SOPs</em></a>
+          <a href="documents.html#templates" class="op-nav-child" data-nav="templates"><span></span><em>Templates</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="mining-tools">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">M</span><em>Mining Tools</em></button>
+        <div class="op-nav-children">
+          <a href="kalkulator-hpm-nikel-2026.html" class="op-nav-child" data-nav="hpm"><span></span><em>HPM Nickel Calculator</em></a>
+          <a href="drillhole-analysis.html" class="op-nav-child" data-nav="drillhole"><span></span><em>Drillhole Analysis</em></a>
+          <a href="mining-tools.html#hauling-cost" class="op-nav-child" data-nav="hauling"><span></span><em>Hauling Cost Calculator</em></a>
+          <a href="mining-tools.html#revenue-projection" class="op-nav-child" data-nav="revenue"><span></span><em>Revenue Projection</em></a>
+        </div>
+      </div>
+    </nav>
+  </aside>
 
-  <!-- NAV -->
+<!-- NAV -->
   <nav class="navbar">
     <div class="nav-logo">One Portal Data</div>
     <ul class="nav-links">
@@ -47,5 +93,6 @@
 
   </section>
 
+  <script src="sidepanel.js"></script>
 </body>
 </html>
