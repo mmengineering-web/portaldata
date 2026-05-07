@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drillhole Analysis — One Portal Data</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    .dh-wrap{max-width:1180px;margin:0 auto 80px;padding:0 24px;display:grid;gap:24px}.dh-panel{background:#fff;border:1px solid var(--border);border-radius:28px;box-shadow:var(--shadow-md);padding:24px}.dh-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.dh-panel h2{margin:0 0 10px;color:var(--text)}.dh-panel p{color:var(--muted);line-height:1.6}.dh-input textarea{width:100%;min-height:220px;border:1px solid var(--border);border-radius:18px;padding:16px;font:500 .9rem/1.45 Barlow, sans-serif;color:var(--text);resize:vertical;background:#f8fbff}.dh-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}.dh-btn{border:0;border-radius:999px;background:var(--primary);color:#fff;padding:12px 18px;font-weight:800;cursor:pointer}.dh-btn.secondary{background:#eef6ff;color:var(--primary);border:1px solid rgba(35,111,191,.15)}.dh-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.dh-kpi{background:#f8fbff;border:1px solid var(--border);border-radius:20px;padding:16px}.dh-kpi small{display:block;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.06em}.dh-kpi strong{display:block;font-size:1.7rem;margin-top:6px;color:var(--primary)}.dh-table{width:100%;border-collapse:separate;border-spacing:0 8px}.dh-table th{text-align:left;color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.06em}.dh-table td{background:#f8fbff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px}.dh-table td:first-child{border-left:1px solid var(--border);border-radius:12px 0 0 12px}.dh-table td:last-child{border-right:1px solid var(--border);border-radius:0 12px 12px 0}.dh-canvas{width:100%;height:360px;border:1px solid var(--border);border-radius:22px;background:linear-gradient(180deg,#fbfdff,#f4f9ff)}.dh-note{font-size:.86rem;color:var(--muted)}@media(max-width:900px){.dh-grid,.dh-kpis{grid-template-columns:1fr}.dh-wrap{padding:0 16px}}
+  
+    /* Collapsible grouped sidepanel page override */
+    .op-nav-section { display:none !important; }
+    .op-nav-group { display:grid; gap:4px; }
+    .op-nav-parent { width:100%; border:0; background:transparent; display:flex; align-items:center; gap:10px; padding:11px 12px; border-radius:15px; color:var(--text-soft); font:inherit; font-size:13px; font-weight:800; cursor:pointer; text-align:left; transition:background .18s,color .18s,transform .18s; }
+    .op-nav-parent:hover, .op-nav-group.is-expanded > .op-nav-parent { background:rgba(35,111,191,.07); color:var(--primary); transform:translateX(2px); }
+    .op-nav-arrow { width:24px; min-width:24px; height:24px; margin-left:auto; border-radius:8px; display:grid; place-items:center; color:var(--text-soft); transition:transform .18s ease, background .18s ease, color .18s ease; }
+    .op-nav-arrow::before { content:'›'; font-size:18px; line-height:1; font-weight:700; }
+    .op-nav-group.is-expanded > .op-nav-parent .op-nav-arrow { transform:rotate(90deg); color:var(--primary); background:rgba(35,111,191,.08); }
+    .op-nav-icon { width:26px; min-width:26px; height:26px; border-radius:10px; display:grid; place-items:center; background:#fff; border:1px solid var(--border); font-size:11px; font-weight:900; color:var(--primary); }
+    .op-nav-parent em { font-style:normal; white-space:nowrap; }
+    .op-nav-children { display:none; padding:2px 0 5px 34px; }
+    .op-nav-group.is-expanded > .op-nav-children { display:grid; gap:4px; }
+    .op-sidebar-nav a.op-nav-child { margin-left:0; padding:9px 12px; border-radius:12px; }
+    .op-sidebar-nav a.op-nav-child span { width:8px; min-width:8px; height:8px; border-radius:999px; background:var(--primary-soft); border:1px solid rgba(35,111,191,.18); }
+    .op-sidebar:not(.is-open) .op-nav-parent { justify-content:flex-end; padding-right:11px; }
+    .op-sidebar:not(.is-open) .op-nav-parent em, .op-sidebar:not(.is-open) .op-nav-arrow, .op-sidebar:not(.is-open) .op-nav-children { display:none !important; }
+
+  </style>
+</head>
+<body>
+  <button class="op-sidebar-toggle" id="opSidebarToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <aside class="op-sidebar" id="opSidebar" aria-label="Main navigation">
+    <div class="op-sidebar-brand"><div class="op-brand-mark">OP</div><div class="op-brand-copy"><strong>One Portal</strong><small>Data Navigation</small></div></div>
+    <nav class="op-sidebar-nav" aria-label="Primary navigation">
+      <div class="op-nav-group" data-group="home">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">H</span><em>Home</em></button>
+        <div class="op-nav-children">
+          <a href="index.html" class="op-nav-child" data-nav="home"><span></span><em>Main Menu</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="production">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">P</span><em>Production</em></button>
+        <div class="op-nav-children">
+          <a href="dashboard.html" class="op-nav-child" data-nav="dashboard"><span></span><em>Dashboard</em></a>
+          <a href="production.html#data-input" class="op-nav-child" data-nav="data-input"><span></span><em>Data Inputs</em></a>
+          <a href="production.html#guidelines" class="op-nav-child" data-nav="guideline"><span></span><em>Guideline</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="exploration">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">E</span><em>Exploration</em></button>
+        <div class="op-nav-children">
+          <a href="exploration.html#request-data" class="op-nav-child" data-nav="request-data"><span></span><em>Request Data</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="documents">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">D</span><em>Documents</em></button>
+        <div class="op-nav-children">
+          <a href="documents.html#reports" class="op-nav-child" data-nav="reports"><span></span><em>Reports</em></a>
+          <a href="documents.html#sops" class="op-nav-child" data-nav="sops"><span></span><em>SOPs</em></a>
+          <a href="documents.html#templates" class="op-nav-child" data-nav="templates"><span></span><em>Templates</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="mining-tools">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">M</span><em>Mining Tools</em></button>
+        <div class="op-nav-children">
+          <a href="kalkulator-hpm-nikel-2026.html" class="op-nav-child" data-nav="hpm"><span></span><em>HPM Nickel Calculator</em></a>
+          <a href="drillhole-analysis.html" class="op-nav-child" data-nav="drillhole"><span></span><em>Drillhole Analysis</em></a>
+          <a href="mining-tools.html#hauling-cost" class="op-nav-child" data-nav="hauling"><span></span><em>Hauling Cost Calculator</em></a>
+          <a href="mining-tools.html#revenue-projection" class="op-nav-child" data-nav="revenue"><span></span><em>Revenue Projection</em></a>
+        </div>
+      </div>
+    </nav>
+  </aside>
+  <nav class="navbar"><div class="nav-logo">One Portal Data</div><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="production.html">Production</a></li><li><a href="exploration.html">Exploration</a></li><li><a href="documents.html">Documents</a></li><li><a href="mining-tools.html" class="active">Mining Tools</a></li></ul></nav>
+  <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><a href="mining-tools.html">Mining Tools</a><span class="sep">›</span><span class="current">Drillhole Analysis</span></div>
+  <section class="page-hero"><div class="page-hero-text"><span class="hero-tag">Spatial & Statistical Review</span><h1>Drillhole<strong>Analysis</strong></h1><p>Analyze collar coordinates and assay intervals, review grade statistics, and visualize drillhole distribution for a Surpac-style drillhole assessment.</p></div><div class="page-hero-images"><div class="page-visual"><div class="pv-header"><span class="pv-title">Analysis Scope</span><span class="pv-badge">CSV</span></div><div class="pv-metric"><span class="pv-metric-label">Required fields</span><span class="pv-metric-value">Hole, X, Y, From, To, Ni</span></div><div class="pv-metric"><span class="pv-metric-label">Outputs</span><span class="pv-metric-value highlight">Stats + Spatial</span></div><div class="pv-metric"><span class="pv-metric-label">Review mode</span><span class="pv-metric-value">Interactive</span></div></div></div></section>
+  <main class="dh-wrap">
+    <section class="dh-grid">
+      <div class="dh-panel dh-input"><h2>Input Drillhole Data</h2><p>Paste CSV data with headers: HoleID, X, Y, From, To, Ni, Fe. You can also load the sample dataset.</p><textarea id="dhData">HoleID,X,Y,From,To,Ni,Fe
+DH-01,503210,9771200,0,2,1.21,18.4
+DH-01,503210,9771200,2,4,1.72,16.8
+DH-01,503210,9771200,4,6,2.05,14.1
+DH-02,503340,9771260,0,2,0.98,25.2
+DH-02,503340,9771260,2,4,1.44,19.7
+DH-03,503480,9771190,0,2,1.88,15.9
+DH-03,503480,9771190,2,4,2.31,13.4
+DH-04,503610,9771350,0,2,0.82,29.5
+DH-04,503610,9771350,2,4,1.16,22.8</textarea><div class="dh-actions"><button class="dh-btn" id="runDh">Run Analysis</button><button class="dh-btn secondary" id="loadSample">Reload Sample</button></div><p class="dh-note">Intervals are length-weighted using To minus From. Spatial view plots collar distribution and colors points by average Ni grade.</p></div>
+      <div class="dh-panel"><h2>Spatial Distribution</h2><canvas id="dhCanvas" class="dh-canvas" width="760" height="420"></canvas><p class="dh-note" id="spatialNote">Run analysis to generate the plan-view plot.</p></div>
+    </section>
+    <section class="dh-panel"><h2>Summary Statistics</h2><div class="dh-kpis" id="dhKpis"></div></section>
+    <section class="dh-panel"><h2>Hole-by-Hole Results</h2><div id="dhTable"></div></section>
+  </main>
+  <script src="sidepanel.js"></script>
+  <script>
+    const sample=document.getElementById('dhData').value;
+    document.getElementById('loadSample').onclick=()=>{document.getElementById('dhData').value=sample; analyze();};
+    document.getElementById('runDh').onclick=analyze;
+    function parseCSV(text){const lines=text.trim().split(/
++/); const heads=lines.shift().split(',').map(h=>h.trim().toLowerCase()); return lines.map(l=>{const cols=l.split(',').map(v=>v.trim()); const o={}; heads.forEach((h,i)=>o[h]=cols[i]); return {hole:o.holeid||o.hole||o.dh||'Unknown', x:+o.x, y:+o.y, from:+o.from, to:+o.to, ni:+o.ni, fe:+o.fe};}).filter(r=>Number.isFinite(r.x)&&Number.isFinite(r.y)&&Number.isFinite(r.from)&&Number.isFinite(r.to)&&Number.isFinite(r.ni));}
+    function avg(a){return a.reduce((s,v)=>s+v,0)/(a.length||1)} function min(a){return Math.min(...a)} function max(a){return Math.max(...a)}
+    function analyze(){const rows=parseCSV(document.getElementById('dhData').value); if(!rows.length){alert('No valid drillhole rows found.');return} rows.forEach(r=>r.len=Math.max(0,r.to-r.from)); const totalLen=rows.reduce((s,r)=>s+r.len,0)||1; const lwNi=rows.reduce((s,r)=>s+r.ni*r.len,0)/totalLen; const holes=[...new Set(rows.map(r=>r.hole))]; const grades=rows.map(r=>r.ni); document.getElementById('dhKpis').innerHTML=[['Holes',holes.length],['Intervals',rows.length],['Length-weighted Ni',lwNi.toFixed(2)+'%'],['Ni range',min(grades).toFixed(2)+'–'+max(grades).toFixed(2)+'%']].map(k=>`<div class="dh-kpi"><small>${k[0]}</small><strong>${k[1]}</strong></div>`).join(''); const by={}; rows.forEach(r=>{by[r.hole]??={hole:r.hole,x:r.x,y:r.y,len:0,niSum:0,feSum:0,n:0,maxNi:0}; by[r.hole].len+=r.len; by[r.hole].niSum+=r.ni*r.len; by[r.hole].feSum+=(Number.isFinite(r.fe)?r.fe:0)*r.len; by[r.hole].n++; by[r.hole].maxNi=Math.max(by[r.hole].maxNi,r.ni);}); const vals=Object.values(by).map(h=>({...h,avgNi:h.niSum/(h.len||1),avgFe:h.feSum/(h.len||1)})); document.getElementById('dhTable').innerHTML='<table class="dh-table"><thead><tr><th>Hole</th><th>X</th><th>Y</th><th>Length</th><th>Avg Ni</th><th>Max Ni</th><th>Avg Fe</th><th>Interpretation</th></tr></thead><tbody>'+vals.map(h=>`<tr><td>${h.hole}</td><td>${h.x.toFixed(0)}</td><td>${h.y.toFixed(0)}</td><td>${h.len.toFixed(1)} m</td><td>${h.avgNi.toFixed(2)}%</td><td>${h.maxNi.toFixed(2)}%</td><td>${h.avgFe.toFixed(1)}%</td><td>${h.avgNi>=1.6?'High-grade target':h.avgNi>=1.2?'Moderate-grade zone':'Low-grade / boundary'}</td></tr>`).join('')+'</tbody></table>'; draw(vals); document.getElementById('spatialNote').textContent='Plan-view collar plot. Larger/darker labels indicate higher average Ni concentration.';}
+    function draw(vals){const c=document.getElementById('dhCanvas'),ctx=c.getContext('2d'),w=c.width,h=c.height; ctx.clearRect(0,0,w,h); const xs=vals.map(v=>v.x),ys=vals.map(v=>v.y),gs=vals.map(v=>v.avgNi); const pad=55, minX=min(xs),maxX=max(xs),minY=min(ys),maxY=max(ys),minG=min(gs),maxG=max(gs); ctx.strokeStyle='#cfe2f7';ctx.lineWidth=1; for(let i=0;i<6;i++){let x=pad+i*(w-2*pad)/5,y=pad+i*(h-2*pad)/5;ctx.beginPath();ctx.moveTo(x,pad);ctx.lineTo(x,h-pad);ctx.stroke();ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(w-pad,y);ctx.stroke();} ctx.fillStyle='#173b61';ctx.font='700 14px Barlow';ctx.fillText('Plan View - Collar Distribution',pad,28); vals.forEach(v=>{const x=pad+(v.x-minX)/((maxX-minX)||1)*(w-2*pad), y=h-pad-(v.y-minY)/((maxY-minY)||1)*(h-2*pad); const t=(v.avgNi-minG)/((maxG-minG)||1); const r=8+t*10; ctx.beginPath();ctx.fillStyle=`rgba(35,111,191,${0.35+0.55*t})`;ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='#0f2f4f';ctx.font='800 12px Barlow';ctx.fillText(v.hole,x+12,y-10);ctx.font='700 11px Barlow';ctx.fillText(v.avgNi.toFixed(2)+'% Ni',x+12,y+5);});}
+    analyze();
+  </script>
+</body>
+</html>
