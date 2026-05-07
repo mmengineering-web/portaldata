@@ -49,7 +49,7 @@
     sidebar.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
   }
-  setSidebar(window.innerWidth >= 1180);
+  setSidebar(false);
   toggle.addEventListener('click', function(){ setSidebar(!document.body.classList.contains('sidebar-open')); });
   window.addEventListener('resize', function(){ if (window.innerWidth < 980) setSidebar(false); });
 })();
