@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Guidelines — One Portal Data</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <button class="op-sidebar-toggle" id="opSidebarToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <aside class="op-sidebar" id="opSidebar" aria-label="Main navigation">
+    <div class="op-sidebar-brand">
+      <div class="op-brand-mark">OP</div>
+      <div class="op-brand-copy"><strong>One Portal</strong><small>Data Navigation</small></div>
+    </div>
+    <nav class="op-sidebar-nav" aria-label="Primary navigation">
+      <div class="op-nav-group" data-group="home">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">H</span><em>Home</em></button>
+        <div class="op-nav-children">
+          <a href="index.html" class="op-nav-child" data-nav="home"><span></span><em>Main Menu</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="production">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">P</span><em>Production</em></button>
+        <div class="op-nav-children">
+          <a href="dashboard.html" class="op-nav-child" data-nav="dashboard"><span></span><em>Dashboard</em></a>
+          <a href="data-inputs.html" class="op-nav-child" data-nav="data-input"><span></span><em>Data Inputs</em></a>
+          <a href="guidelines.html" class="op-nav-child is-active-parent" data-nav="guideline"><span></span><em>Guideline</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="exploration">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">E</span><em>Exploration</em></button>
+        <div class="op-nav-children">
+          <a href="exploration.html#request-data" class="op-nav-child" data-nav="request-data"><span></span><em>Request Data</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="documents">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">D</span><em>Documents</em></button>
+        <div class="op-nav-children">
+          <a href="documents.html#reports" class="op-nav-child" data-nav="reports"><span></span><em>Reports</em></a>
+          <a href="documents.html#sops" class="op-nav-child" data-nav="sops"><span></span><em>SOPs</em></a>
+          <a href="documents.html#templates" class="op-nav-child" data-nav="templates"><span></span><em>Templates</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="mining-tools">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">M</span><em>Mining Tools</em></button>
+        <div class="op-nav-children">
+          <a href="kalkulator-hpm-nikel-2026.html" class="op-nav-child" data-nav="hpm"><span></span><em>HPM Nickel Calculator</em></a>
+          <a href="drillhole-analysis.html" class="op-nav-child" data-nav="drillhole"><span></span><em>Drillhole Analysis</em></a>
+          <a href="mining-tools.html#hauling-cost" class="op-nav-child" data-nav="hauling"><span></span><em>Hauling Cost Calculator</em></a>
+          <a href="mining-tools.html#revenue-projection" class="op-nav-child" data-nav="revenue"><span></span><em>Revenue Projection</em></a>
+        </div>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-logo">One Portal Data</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="production.html" class="active">Production</a></li>
+      <li><a href="exploration.html">Exploration</a></li>
+      <li><a href="documents.html">Documents</a></li>
+      <li><a href="mining-tools.html">Mining Tools</a></li>
+      <li><a href="help.html">Help</a></li>
+    </ul>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="production.html">Production</a>
+    <span class="sep">›</span>
+    <a href="guidelines.html">Guidelines</a>
+    <span class="sep">›</span>
+    <span class="current">Dashboard</span>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-text">
+      <span class="hero-tag">Guidelines</span>
+      <h1>Dashboard <strong>Guide</strong></h1>
+      <p>Interactive PDF guide — navigate each page of the Dashboard User Guide by clicking the mapped areas.</p>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE GUIDELINE -->
+  <section class="guidelines-section dg-section" id="guidelines">
+    <div class="dg-inner">
+
+      <div class="dg-guide-header">
+        <div>
+          <h2>Dashboard Guidelines</h2>
+          <p>PDF guide rendered as readable pages. Klik area yang aktif (biru) untuk berpindah halaman atau melihat detail.</p>
+        </div>
+        <div class="dg-guide-actions">
+          <a href="guidelines.html" class="dg-action-link">← Back to Guidelines</a>
+          <a href="dashboard_assets/Dashboard%20Guideline.pdf" download class="dg-action-link">↓ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Prev/Next Controls -->
+      <div class="dg-nav-controls">
+        <button class="dg-btn-nav" id="dgPrevBtn" disabled>← Prev</button>
+        <span class="dg-nav-indicator" id="dgNavIndicator">Page 1 / 19</span>
+        <button class="dg-btn-nav" id="dgNextBtn">Next →</button>
+      </div>
+
+      <!-- Page viewer -->
+      <div id="dgGuideRoot">
+
+        <div class="dg-page current-page" id="dgPage-01" data-page="1" data-title="Cover">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-01.png" alt="Dashboard User Guide cover" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:2.7%;top:59.5%;width:22.2%;height:19.4%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:27.1%;top:59.5%;width:21.9%;height:19.4%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:51.5%;top:59.5%;width:22.1%;height:19.4%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:75.8%;top:59.5%;width:21.7%;height:19.4%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:38%;top:88.8%;width:24%;height:8%;" data-target="dgPage-02"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-02" data-page="2" data-title="Exploration &amp; Mining Project">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-02.png" alt="Exploration and Mining Project" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-03"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-03" data-page="3" data-title="Daily Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-03.png" alt="Daily Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-04"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-04" data-page="4" data-title="Production Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-04.png" alt="Production Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-05"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-05" data-page="5" data-title="Shipment Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-05.png" alt="Shipment Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-06"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-06" data-page="6" data-title="Stockpile Management &amp; Hauling Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-06.png" alt="Stockpile Management and Hauling Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-07"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-07" data-page="7" data-title="Fuel, Equipment, and Unit Performance Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-07.png" alt="Fuel, Equipment, and Unit Performance Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-08"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-08" data-page="8" data-title="Weather, Effective Working Hour, and Manpower Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-08.png" alt="Weather, Effective Working Hour, and Manpower Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-09"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-09" data-page="9" data-title="Dropdown Filter - Daily Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-09.png" alt="Dropdown Filter for Daily Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-10"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-10" data-page="10" data-title="Dropdown Filter - Production Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-10.png" alt="Dropdown Filter for Production Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-11"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-11" data-page="11" data-title="Chart Reading - Project Overview">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-11.png" alt="Chart Reading Project Overview" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-12"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-12" data-page="12" data-title="Chart Reading - Map &amp; Resource Reserve">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-12.png" alt="Chart Reading Map and Resource Reserve" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-13"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-13" data-page="13" data-title="Chart Reading - Daily Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-13.png" alt="Chart Reading Daily Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-14"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-14" data-page="14" data-title="Chart Reading - Production Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-14.png" alt="Chart Reading Production Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-15"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-15" data-page="15" data-title="Chart Reading - Shipment Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-15.png" alt="Chart Reading Shipment Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-16"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-16" data-page="16" data-title="Chart Reading - Stockpile &amp; Hauling Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-16.png" alt="Chart Reading Stockpile and Hauling Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-17"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-17" data-page="17" data-title="Chart Reading - Fuel &amp; Equipment Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-17.png" alt="Chart Reading Fuel and Equipment Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-18"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-18" data-page="18" data-title="Chart Reading - Weather &amp; Manpower Report">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-18.png" alt="Chart Reading Weather and Manpower Report" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-19"></button>
+          </div>
+        </div>
+
+        <div class="dg-page" id="dgPage-19" data-page="19" data-title="Notes &amp; Tips">
+          <div class="dg-page-frame">
+            <img src="dashboard_assets/page-19.png" alt="Dashboard Notes and Tips" class="dg-page-image" />
+            <button class="dg-hotspot" style="left:57.1%;top:4.2%;width:15.1%;height:4.6%;" data-target="dgPage-02"></button>
+            <button class="dg-hotspot" style="left:72.1%;top:4.2%;width:12.7%;height:4.6%;" data-target="dgPage-09"></button>
+            <button class="dg-hotspot" style="left:84.8%;top:4.2%;width:10.8%;height:4.6%;" data-target="dgPage-11"></button>
+            <button class="dg-hotspot" style="left:95.6%;top:4.2%;width:4.1%;height:4.6%;" data-target="dgPage-19"></button>
+            <button class="dg-hotspot" style="left:95.5%;top:86.5%;width:3.5%;height:8%;" data-target="dgPage-01"></button>
+            <button class="dg-hotspot" style="left:13%;top:18%;width:74%;height:58%;" data-target="dgPage-19"></button>
+          </div>
+        </div>
+
+      </div><!-- /dgGuideRoot -->
+
+      <p class="dg-hint"><span class="dg-hint-dot"></span> Hover area yang menyala biru untuk melihat keterangan. Klik untuk membuka detail atau berpindah halaman. Gunakan tombol ← → atau keyboard untuk navigasi.</p>
+
+    </div><!-- /dg-inner -->
+  </section>
+
+  <script>
+  (function() {
+    const pages = Array.from(document.querySelectorAll('.dg-page'));
+    const pageIds = pages.map(function(page) { return page.id; });
+    const prevBtn = document.getElementById('dgPrevBtn');
+    const nextBtn = document.getElementById('dgNextBtn');
+    const indicator = document.getElementById('dgNavIndicator');
+    let currentIndex = Math.max(0, pages.findIndex(function(page) { return page.classList.contains('current-page'); }));
+
+    function updateControls() {
+      if (prevBtn) prevBtn.disabled = currentIndex === 0;
+      if (nextBtn) nextBtn.disabled = currentIndex === pages.length - 1;
+      if (indicator) indicator.textContent = 'Page ' + (currentIndex + 1) + ' / ' + pages.length;
+    }
+
+    function showPage(index) {
+      if (index < 0 || index >= pages.length) return;
+      pages.forEach(function(page) { page.classList.remove('current-page'); });
+      pages[index].classList.add('current-page');
+      currentIndex = index;
+      updateControls();
+      document.getElementById('guidelines').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function goToPage(id) {
+      const index = pageIds.indexOf(id);
+      if (index >= 0) showPage(index);
+    }
+
+    document.querySelectorAll('.dg-hotspot[data-target]').forEach(function(button) {
+      button.addEventListener('click', function() { goToPage(button.dataset.target); });
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', function() { showPage(currentIndex - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { showPage(currentIndex + 1); });
+
+    window.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowRight') showPage(currentIndex + 1);
+      if (event.key === 'ArrowLeft') showPage(currentIndex - 1);
+    });
+
+    showPage(currentIndex);
+  })();
+  </script>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

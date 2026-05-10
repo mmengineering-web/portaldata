@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Production — One Portal Data</title>
+  <title>Data Inputs Guidelines — One Portal Data</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet"/>
 </head>
-<body class="production-page">
+<body>
   <button class="op-sidebar-toggle" id="opSidebarToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
   <aside class="op-sidebar" id="opSidebar" aria-label="Main navigation">
     <div class="op-sidebar-brand">
@@ -26,7 +26,7 @@
         <div class="op-nav-children">
           <a href="dashboard.html" class="op-nav-child" data-nav="dashboard"><span></span><em>Dashboard</em></a>
           <a href="data-inputs.html" class="op-nav-child" data-nav="data-input"><span></span><em>Data Inputs</em></a>
-          <a href="guidelines.html" class="op-nav-child" data-nav="guideline"><span></span><em>Guideline</em></a>
+          <a href="guidelines.html" class="op-nav-child is-active-parent" data-nav="guideline"><span></span><em>Guideline</em></a>
         </div>
       </div>
       <div class="op-nav-group" data-group="exploration">
@@ -55,7 +55,7 @@
     </nav>
   </aside>
 
-<!-- NAV -->
+  <!-- NAV -->
   <nav class="navbar">
     <div class="nav-logo">One Portal Data</div>
     <ul class="nav-links">
@@ -72,75 +72,112 @@
   <div class="breadcrumb">
     <a href="index.html">Home</a>
     <span class="sep">›</span>
-    <span class="current">Production</span>
+    <a href="production.html">Production</a>
+    <span class="sep">›</span>
+    <a href="guidelines.html">Guidelines</a>
+    <span class="sep">›</span>
+    <span class="current">Data Inputs</span>
   </div>
 
   <!-- PAGE HERO -->
   <section class="page-hero">
     <div class="page-hero-text">
-      <span class="hero-tag">Operations</span>
-      <h1>Production<strong>Hub</strong></h1>
-      <p>The central hub for <strong>operational monitoring</strong> — including performance dashboards, daily data input, data sources, and master data to support data-driven decision making.</p>
+      <span class="hero-tag">Guidelines</span>
+      <h1>Data Inputs <strong>Guide</strong></h1>
+      <p>Reference guide for submitting daily operational data entries across all production sites.</p>
     </div>
     <div class="page-hero-images">
       <div class="page-visual">
         <div class="pv-header">
-          <span class="pv-title">Production Overview</span>
-          <span class="pv-badge">Live</span>
+          <span class="pv-title">Data Inputs</span>
+          <span class="pv-badge">Reference</span>
         </div>
         <div class="pv-metric">
-          <span class="pv-metric-label">Today's Output</span>
-          <span class="pv-metric-value highlight">24,820 WMT</span>
+          <span class="pv-metric-label">Sections</span>
+          <span class="pv-metric-value highlight">6 Topics</span>
         </div>
         <div class="pv-metric">
-          <span class="pv-metric-label">Target Achievement</span>
-          <span class="pv-metric-value positive">▲ 96.4%</span>
-        </div>
-        <div class="pv-metric">
-          <span class="pv-metric-label">Active Equipment</span>
-          <span class="pv-metric-value">18 / 21</span>
-        </div>
-        <div class="pv-bar-group">
-          <div class="pv-bar-label">Weekly Trend</div>
-          <div class="pv-bars">
-            <div class="pv-bar h55"></div>
-            <div class="pv-bar h75"></div>
-            <div class="pv-bar h60"></div>
-            <div class="pv-bar h80"></div>
-            <div class="pv-bar h65"></div>
-            <div class="pv-bar h90 active"></div>
-            <div class="pv-bar h80 active"></div>
-          </div>
+          <span class="pv-metric-label">Coverage</span>
+          <span class="pv-metric-value positive">All Sites</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHAT ARE YOU LOOKING FOR -->
-  <section class="looking-section production-finder">
-    <div class="looking-inner production-finder-card">
-      <div class="looking-text production-finder-copy">
-        <span class="finder-eyebrow">Production Shortcut</span>
-        <h2>What are you looking for?</h2>
-        <p>Choose the workspace you need and jump directly to dashboards, data submissions, or dashboard usage guidance.</p>
+  <!-- GUIDELINE CONTENT -->
+  <section class="looking-section guidelines-content-section">
+    <div class="guidelines-content-inner">
+
+      <div class="gc-back-bar">
+        <a href="guidelines.html" class="gc-back-link">← Back to Guidelines</a>
+        <span class="gc-subtitle">Data Inputs Reference Guide</span>
       </div>
-      <div class="finder-actions">
-        <a href="dashboard.html" class="finder-card">
-          <span class="finder-icon subtle-icon">DB</span>
-          <strong>Dashboard</strong>
-          <small>Open production performance overview</small>
-        </a>
-        <a href="data-inputs.html" class="finder-card">
-          <span class="finder-icon subtle-icon">IN</span>
-          <strong>Data Inputs</strong>
-          <small>Jump to required submission forms</small>
-        </a>
-        <a href="guidelines.html" class="finder-card">
-          <span class="finder-icon subtle-icon">GD</span>
-          <strong>Guidelines</strong>
-          <small>Read mapped PDF guide pages</small>
-        </a>
+
+      <div class="gc-intro-card">
+        <div class="gc-intro-icon">IN</div>
+        <div>
+          <h2>Data Inputs Guide</h2>
+          <p>Panduan ini menjelaskan cara mengisi formulir data harian untuk masing-masing site produksi. Pastikan semua field diisi dengan benar sebelum submit untuk menjaga keakuratan data di dashboard.</p>
+        </div>
       </div>
+
+      <div class="gc-topics-grid">
+
+        <div class="gc-topic-card">
+          <div class="gc-topic-num">01</div>
+          <div class="gc-topic-body">
+            <strong>Akses Form Data Inputs</strong>
+            <p>Buka halaman <a href="data-inputs.html">Data Inputs</a> dan pilih site yang sesuai. Setiap site memiliki form Google Sheet tersendiri yang dapat diakses melalui tombol "Open Data Input App".</p>
+          </div>
+        </div>
+
+        <div class="gc-topic-card">
+          <div class="gc-topic-num">02</div>
+          <div class="gc-topic-body">
+            <strong>Field Wajib Diisi</strong>
+            <p>Setiap form memiliki field wajib (required) yang harus diisi sebelum submit. Field wajib mencakup: tanggal, shift, nama operator, dan data produksi aktual (WMT/BCM/Kadar).</p>
+          </div>
+        </div>
+
+        <div class="gc-topic-card">
+          <div class="gc-topic-num">03</div>
+          <div class="gc-topic-body">
+            <strong>Format Data &amp; Satuan</strong>
+            <p>Gunakan format angka desimal dengan titik (bukan koma) untuk data numerik. Satuan standar: WMT untuk tonase, BCM untuk volume, %, Ni, Fe, Co untuk kadar mineral.</p>
+          </div>
+        </div>
+
+        <div class="gc-topic-card">
+          <div class="gc-topic-num">04</div>
+          <div class="gc-topic-body">
+            <strong>Data Produksi Harian</strong>
+            <p>Input produksi harian mencakup: Mining (OB removal + ore production), Hauling (ritase &amp; jarak), Stockpile (in/out), dan Shipment (loading &amp; manifest) sesuai aktivitas di lapangan.</p>
+          </div>
+        </div>
+
+        <div class="gc-topic-card">
+          <div class="gc-topic-num">05</div>
+          <div class="gc-topic-body">
+            <strong>Data Peralatan &amp; SDM</strong>
+            <p>Isi data availability alat berat (PA/UA/MA), konsumsi BBM per unit, jam kerja efektif, data cuaca (curah hujan), dan jumlah manpower harian per shift.</p>
+          </div>
+        </div>
+
+        <div class="gc-topic-card">
+          <div class="gc-topic-num">06</div>
+          <div class="gc-topic-body">
+            <strong>Verifikasi &amp; Submit</strong>
+            <p>Setelah mengisi semua field, periksa kembali data sebelum menyimpan. Data yang telah disubmit akan otomatis terupdate di Dashboard dalam beberapa menit melalui Google Data Studio.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="gc-action-bar">
+        <a href="data-inputs.html" class="gc-action-btn primary">Buka Data Inputs →</a>
+        <a href="guidelines-dashboard.html" class="gc-action-btn">Lihat Dashboard Guidelines</a>
+      </div>
+
     </div>
   </section>
 

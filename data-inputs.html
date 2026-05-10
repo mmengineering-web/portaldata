@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Inputs — One Portal Data</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    .data-inputs-page {
+      min-height: 100vh;
+      padding: 110px 7vw 80px;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(37, 99, 235, 0.18), transparent 30%),
+        radial-gradient(circle at 88% 20%, rgba(96, 165, 250, 0.14), transparent 34%),
+        linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+    }
+    .data-inputs-hero {
+      max-width: 1120px;
+      margin: 0 auto 34px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+    .data-inputs-copy,
+    .data-inputs-note,
+    .site-card {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 28px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+    }
+    .data-inputs-copy { padding: 38px; }
+    .data-inputs-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.12);
+      color: #1d4ed8;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+    .data-inputs-copy h1 {
+      margin: 22px 0 12px;
+      color: #0f172a;
+      font-size: clamp(2.4rem, 5vw, 4.7rem);
+      line-height: 0.95;
+      font-weight: 900;
+    }
+    .data-inputs-copy h1 strong { color: #1d4ed8; display: block; }
+    .data-inputs-copy p {
+      color: #475569;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 720px;
+    }
+    .data-inputs-note {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .data-inputs-note strong { color: #0f172a; font-size: 1.2rem; }
+    .data-inputs-note p { color: #64748b; line-height: 1.65; margin: 10px 0 0; }
+    .site-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .site-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      min-height: 240px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .site-card:hover { transform: translateY(-6px); box-shadow: 0 28px 70px rgba(37, 99, 235, 0.16); border-color: rgba(37,99,235,.22); }
+    .site-badge {
+      width: 58px;
+      height: 58px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1d4ed8, #60a5fa);
+      color: white;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+    }
+    .site-card h2 { color: #0f172a; font-size: 1.7rem; margin: 0 0 8px; }
+    .site-card p { color: #64748b; line-height: 1.6; margin: 0 0 24px; }
+    .open-app-btn {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 52px;
+      border-radius: 16px;
+      background: #0f172a;
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .open-app-btn:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 14px 34px rgba(37, 99, 235, 0.24); }
+    @media (max-width: 900px) {
+      .data-inputs-hero, .site-grid { grid-template-columns: 1fr; }
+      .data-inputs-page { padding: 96px 20px 56px; }
+    }
+  </style>
+</head>
+<body>
+  <button class="op-sidebar-toggle" id="opSidebarToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <aside class="op-sidebar" id="opSidebar" aria-label="Main navigation">
+    <div class="op-sidebar-brand">
+      <div class="op-brand-mark">OP</div>
+      <div class="op-brand-copy"><strong>One Portal</strong><small>Data Navigation</small></div>
+    </div>
+    <nav class="op-sidebar-nav" aria-label="Primary navigation">
+      <div class="op-nav-group" data-group="home">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">H</span><em>Home</em></button>
+        <div class="op-nav-children">
+          <a href="index.html" class="op-nav-child" data-nav="home"><span></span><em>Main Menu</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="production">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">P</span><em>Production</em></button>
+        <div class="op-nav-children">
+          <a href="dashboard.html" class="op-nav-child" data-nav="dashboard"><span></span><em>Dashboard</em></a>
+          <a href="data-inputs.html" class="op-nav-child active" data-nav="data-input"><span></span><em>Data Inputs</em></a>
+          <a href="guidelines.html" class="op-nav-child" data-nav="guideline"><span></span><em>Guideline</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="exploration">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">E</span><em>Exploration</em></button>
+        <div class="op-nav-children">
+          <a href="exploration.html#request-data" class="op-nav-child" data-nav="request-data"><span></span><em>Request Data</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="documents">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">D</span><em>Documents</em></button>
+        <div class="op-nav-children">
+          <a href="documents.html#reports" class="op-nav-child" data-nav="reports"><span></span><em>Reports</em></a>
+          <a href="documents.html#sops" class="op-nav-child" data-nav="sops"><span></span><em>SOPs</em></a>
+          <a href="documents.html#templates" class="op-nav-child" data-nav="templates"><span></span><em>Templates</em></a>
+        </div>
+      </div>
+      <div class="op-nav-group" data-group="mining-tools">
+        <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">M</span><em>Mining Tools</em></button>
+        <div class="op-nav-children">
+          <a href="kalkulator-hpm-nikel-2026.html" class="op-nav-child" data-nav="hpm"><span></span><em>HPM Nickel Calculator</em></a>
+          <a href="drillhole-analysis.html" class="op-nav-child" data-nav="drillhole"><span></span><em>Drillhole Analysis</em></a>
+          <a href="mining-tools.html#hauling-cost" class="op-nav-child" data-nav="hauling"><span></span><em>Hauling Cost Calculator</em></a>
+          <a href="mining-tools.html#revenue-projection" class="op-nav-child" data-nav="revenue"><span></span><em>Revenue Projection</em></a>
+        </div>
+      </div>
+    </nav>
+  </aside>
+
+  <nav class="navbar">
+    <div class="nav-logo">One Portal Data</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="production.html" class="active">Production</a></li>
+      <li><a href="exploration.html">Exploration</a></li>
+      <li><a href="documents.html">Documents</a></li>
+      <li><a href="mining-tools.html">Mining Tools</a></li>
+      <li><a href="help.html">Help</a></li>
+    </ul>
+  </nav>
+
+  <main class="data-inputs-page">
+    <section class="data-inputs-hero">
+      <div class="data-inputs-copy">
+        <span class="data-inputs-eyebrow">Production Data Inputs</span>
+        <h1>Select Your<strong>Site Workbook</strong></h1>
+        <p>Choose the site you want to update. BM, TMS, and WKM are site names; each card opens the assigned OneDrive Excel workbook directly in the desktop Excel app when the device supports Microsoft Office protocol links.</p>
+      </div>
+      <aside class="data-inputs-note">
+        <strong>Access requirement</strong>
+        <p>BM, TMS, and WKM refer to individual operating sites. These workbooks use your shared OneDrive permissions, so users must be signed in with an authorized Microsoft account and have Excel installed on their computer.</p>
+      </aside>
+    </section>
+
+    <section class="site-grid" aria-label="Site data input workbooks">
+      <article class="site-card">
+        <span class="site-badge">BM</span>
+        <h2>BM Site</h2>
+        <p>BM is one of the production sites. Open its dedicated production data input workbook.</p>
+        <a class="open-app-btn" href="ms-excel:ofe|u|https://1drv.ms/x/c/4961b8ac6bbaac6f/IQCtDgzOCHGjTK_L6C3QyOc5AcB-ZyKX6XDEqjYaydjtGbI">Open in App</a>
+      </article>
+      <article class="site-card">
+        <span class="site-badge">TMS</span>
+        <h2>TMS Site</h2>
+        <p>TMS is one of the production sites. Open its dedicated production data input workbook.</p>
+        <a class="open-app-btn" href="ms-excel:ofe|u|https://1drv.ms/x/c/4961b8ac6bbaac6f/IQAxpWWU2rnuSpHOGknkuDZnAcEMf_cJanDU-tsUZ4WTAhk">Open in App</a>
+      </article>
+      <article class="site-card">
+        <span class="site-badge">WKM</span>
+        <h2>WKM Site</h2>
+        <p>WKM is one of the production sites. Open its dedicated production data input workbook.</p>
+        <a class="open-app-btn" href="ms-excel:ofe|u|https://1drv.ms/x/c/4961b8ac6bbaac6f/IQCrB1sJPbTpQ49jE3dOrQ4_AX7Lg4-oCmZiuRufJF4sFlY">Open in App</a>
+      </article>
+    </section>
+  </main>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

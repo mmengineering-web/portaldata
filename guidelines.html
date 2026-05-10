@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Production — One Portal Data</title>
+  <title>Guidelines — One Portal Data</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet"/>
 </head>
-<body class="production-page">
+<body>
   <button class="op-sidebar-toggle" id="opSidebarToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
   <aside class="op-sidebar" id="opSidebar" aria-label="Main navigation">
     <div class="op-sidebar-brand">
@@ -26,7 +26,7 @@
         <div class="op-nav-children">
           <a href="dashboard.html" class="op-nav-child" data-nav="dashboard"><span></span><em>Dashboard</em></a>
           <a href="data-inputs.html" class="op-nav-child" data-nav="data-input"><span></span><em>Data Inputs</em></a>
-          <a href="guidelines.html" class="op-nav-child" data-nav="guideline"><span></span><em>Guideline</em></a>
+          <a href="guidelines.html" class="op-nav-child is-active" data-nav="guideline"><span></span><em>Guideline</em></a>
         </div>
       </div>
       <div class="op-nav-group" data-group="exploration">
@@ -55,7 +55,7 @@
     </nav>
   </aside>
 
-<!-- NAV -->
+  <!-- NAV -->
   <nav class="navbar">
     <div class="nav-logo">One Portal Data</div>
     <ul class="nav-links">
@@ -72,74 +72,79 @@
   <div class="breadcrumb">
     <a href="index.html">Home</a>
     <span class="sep">›</span>
-    <span class="current">Production</span>
+    <a href="production.html">Production</a>
+    <span class="sep">›</span>
+    <span class="current">Guidelines</span>
   </div>
 
   <!-- PAGE HERO -->
   <section class="page-hero">
     <div class="page-hero-text">
-      <span class="hero-tag">Operations</span>
-      <h1>Production<strong>Hub</strong></h1>
-      <p>The central hub for <strong>operational monitoring</strong> — including performance dashboards, daily data input, data sources, and master data to support data-driven decision making.</p>
+      <span class="hero-tag">Production</span>
+      <h1>Guidelines</h1>
+      <p>User guides and reference documentation to help you navigate and use the production platform effectively.</p>
     </div>
     <div class="page-hero-images">
       <div class="page-visual">
         <div class="pv-header">
-          <span class="pv-title">Production Overview</span>
-          <span class="pv-badge">Live</span>
+          <span class="pv-title">Guidelines</span>
+          <span class="pv-badge">2 Guides</span>
         </div>
         <div class="pv-metric">
-          <span class="pv-metric-label">Today's Output</span>
-          <span class="pv-metric-value highlight">24,820 WMT</span>
+          <span class="pv-metric-label">Dashboard Guide</span>
+          <span class="pv-metric-value highlight">19 Pages</span>
         </div>
         <div class="pv-metric">
-          <span class="pv-metric-label">Target Achievement</span>
-          <span class="pv-metric-value positive">▲ 96.4%</span>
+          <span class="pv-metric-label">Data Inputs Guide</span>
+          <span class="pv-metric-value positive">Available</span>
         </div>
         <div class="pv-metric">
-          <span class="pv-metric-label">Active Equipment</span>
-          <span class="pv-metric-value">18 / 21</span>
-        </div>
-        <div class="pv-bar-group">
-          <div class="pv-bar-label">Weekly Trend</div>
-          <div class="pv-bars">
-            <div class="pv-bar h55"></div>
-            <div class="pv-bar h75"></div>
-            <div class="pv-bar h60"></div>
-            <div class="pv-bar h80"></div>
-            <div class="pv-bar h65"></div>
-            <div class="pv-bar h90 active"></div>
-            <div class="pv-bar h80 active"></div>
-          </div>
+          <span class="pv-metric-label">Interactive</span>
+          <span class="pv-metric-value">Clickable PDF</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHAT ARE YOU LOOKING FOR -->
-  <section class="looking-section production-finder">
-    <div class="looking-inner production-finder-card">
-      <div class="looking-text production-finder-copy">
-        <span class="finder-eyebrow">Production Shortcut</span>
-        <h2>What are you looking for?</h2>
-        <p>Choose the workspace you need and jump directly to dashboards, data submissions, or dashboard usage guidance.</p>
+  <!-- GUIDELINE CARDS SECTION -->
+  <section class="looking-section guidelines-landing-section">
+    <div class="guidelines-landing-inner">
+      <div class="guidelines-landing-header">
+        <span class="finder-eyebrow">Production Guidelines</span>
+        <h2>Choose a Guideline</h2>
+        <p>Select the guide that matches what you need help with. Each guideline contains detailed, interactive page-by-page documentation.</p>
       </div>
-      <div class="finder-actions">
-        <a href="dashboard.html" class="finder-card">
-          <span class="finder-icon subtle-icon">DB</span>
-          <strong>Dashboard</strong>
-          <small>Open production performance overview</small>
+
+      <div class="guidelines-card-grid">
+
+        <a href="guidelines-dashboard.html" class="guidelines-landing-card">
+          <div class="glc-icon">DB</div>
+          <div class="glc-body">
+            <strong>Dashboard Guidelines</strong>
+            <p>Step-by-step guide for reading and navigating the Production Dashboard. Covers daily reports, production charts, shipment data, filters, and tips.</p>
+            <div class="glc-meta">
+              <span class="glc-tag">19 pages</span>
+              <span class="glc-tag">Interactive</span>
+              <span class="glc-tag blue">Dashboard</span>
+            </div>
+          </div>
+          <span class="glc-arrow">→</span>
         </a>
-        <a href="data-inputs.html" class="finder-card">
-          <span class="finder-icon subtle-icon">IN</span>
-          <strong>Data Inputs</strong>
-          <small>Jump to required submission forms</small>
+
+        <a href="guidelines-data-inputs.html" class="guidelines-landing-card">
+          <div class="glc-icon">IN</div>
+          <div class="glc-body">
+            <strong>Data Inputs Guidelines</strong>
+            <p>Instructions for submitting and managing daily operational data entries. Covers each site's data forms and required fields for production tracking.</p>
+            <div class="glc-meta">
+              <span class="glc-tag">Reference</span>
+              <span class="glc-tag">Submission</span>
+              <span class="glc-tag blue">Data Inputs</span>
+            </div>
+          </div>
+          <span class="glc-arrow">→</span>
         </a>
-        <a href="guidelines.html" class="finder-card">
-          <span class="finder-icon subtle-icon">GD</span>
-          <strong>Guidelines</strong>
-          <small>Read mapped PDF guide pages</small>
-        </a>
+
       </div>
     </div>
   </section>

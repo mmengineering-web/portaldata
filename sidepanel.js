@@ -49,7 +49,10 @@
     sidebar.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
   }
+  // Default: always collapsed on load
   setSidebar(false);
   toggle.addEventListener('click', function(){ setSidebar(!document.body.classList.contains('sidebar-open')); });
   window.addEventListener('resize', function(){ if (window.innerWidth < 980) setSidebar(false); });
 })();
+
+document.addEventListener('mousemove',e=>{document.body.style.setProperty('--x',e.clientX+'px');document.body.style.setProperty('--y',e.clientY+'px');});
