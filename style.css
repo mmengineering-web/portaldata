@@ -2250,7 +2250,7 @@ body:not(.sidebar-open) .op-nav-arrow {
 
 
 /* Modern interactive improvements */
-body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(59,110,240,.18),transparent 18%);pointer-events:none;z-index:0}
+body::before{content:none;}
 .hero,.menu-section,.content-section{position:relative;z-index:1}
 .hero-visual{background:rgba(255,255,255,.7);backdrop-filter:blur(24px);overflow:visible}
 .hv-card,.menu-card,.dashboard-card{transition:transform .25s ease,box-shadow .25s ease}
