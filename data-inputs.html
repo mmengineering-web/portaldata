@@ -192,28 +192,162 @@
       </aside>
     </section>
 
-    <section class="site-grid" aria-label="Site data input workbooks">
-      <article class="site-card">
-        <span class="site-badge">BM</span>
-        <h2>BM Site</h2>
-        <p>BM is one of the production sites. Open its dedicated production data input workbook.</p>
-        <a class="open-app-btn" href="ms-excel:ofe|u|https://1drv.ms/x/c/4961b8ac6bbaac6f/IQCtDgzOCHGjTK_L6C3QyOc5AcB-ZyKX6XDEqjYaydjtGbI">Open in App</a>
-      </article>
-      <article class="site-card">
-        <span class="site-badge">TMS</span>
-        <h2>TMS Site</h2>
-        <p>TMS is one of the production sites. Open its dedicated production data input workbook.</p>
-        <a class="open-app-btn" href="ms-excel:ofe|u|https://onedrive.live.com/edit.aspx?cid=4961b8ac6bbaac6f&resid=4961B8AC6BBAAC6F%219465A531&authkey=AcEMf_cJanDU-tsUZ4WTAhk">Open in App</a>
-      </article>
-      <article class="site-card">
-        <span class="site-badge">WKM</span>
-        <h2>WKM Site</h2>
-        <p>WKM is one of the production sites. Open its dedicated production data input workbook.</p>
-        <a class="open-app-btn" href="ms-excel:ofe|u|https://1drv.ms/x/c/4961b8ac6bbaac6f/IQCrB1sJPbTpQ49jE3dOrQ4_AX7Lg4-oCmZiuRufJF4sFlY">Open in App</a>
-      </article>
-    </section>
+    
+<section
+  class="site-grid"
+  aria-label="Site workbooks"
+>
+
+  <!-- BM -->
+
+  <article class="site-card">
+
+    <span class="site-badge">
+      BM
+    </span>
+
+    <h2>
+      BM Site
+    </h2>
+
+    <p>
+      Download the BM production workbook
+      and upload the completed file after
+      data input has been finished.
+    </p>
+
+    <button
+      class="open-app-btn"
+      type="button"
+      onclick="openWorkbook('BM')"
+    >
+      Download Template
+    </button>
+
+    <a
+      class="open-app-btn"
+      style="
+        margin-top:12px;
+        background:#ffffff;
+        color:#1d4ed8;
+        border:2px solid #bfdbfe;
+      "
+      href="https://1drv.ms/f/c/4961b8ac6bbaac6f/IgC0o3W5zyzNQ5PV0okND85cATE5EPBST2AWMqVbojghlS0?e=6oW0lZ"
+      target="_blank"
+    >
+      Open Upload Folder
+    </a>
+
+  </article>
+
+  <!-- TMS -->
+
+  <article class="site-card">
+
+    <span class="site-badge">
+      TMS
+    </span>
+
+    <h2>
+      TMS Site
+    </h2>
+
+    <p>
+      Download the TMS production workbook
+      and upload the completed file after
+      data input has been finished.
+    </p>
+
+    <button
+      class="open-app-btn"
+      type="button"
+      onclick="openWorkbook('TMS')"
+    >
+      Download Template
+    </button>
+
+    <a
+      class="open-app-btn"
+      style="
+        margin-top:12px;
+        background:#ffffff;
+        color:#1d4ed8;
+        border:2px solid #bfdbfe;
+      "
+      href="https://1drv.ms/f/c/4961b8ac6bbaac6f/IgD8ukNtaRa4R4drd-faDLLgAa2iJa016304gsMqbJBZzLk?e=zTaQbf"
+      target="_blank"
+    >
+      Open Upload Folder
+    </a>
+
+  </article>
+
+  <!-- WKM -->
+
+  <article class="site-card">
+
+    <span class="site-badge">
+      WKM
+    </span>
+
+    <h2>
+      WKM Site
+    </h2>
+
+    <p>
+      Download the WKM production workbook
+      and upload the completed file after
+      data input has been finished.
+    </p>
+
+    <button
+      class="open-app-btn"
+      type="button"
+      onclick="openWorkbook('WKM')"
+    >
+      Download Template
+    </button>
+
+    <a
+      class="open-app-btn"
+      style="
+        margin-top:12px;
+        background:#ffffff;
+        color:#1d4ed8;
+        border:2px solid #bfdbfe;
+      "
+      href="https://1drv.ms/f/c/4961b8ac6bbaac6f/IgAV2jNH0VvWTITB360lDn_DARGroVaNsaqTnC2wjCrb3xw?e=PclfT3"
+      target="_blank"
+    >
+      Open Upload Folder
+    </a>
+
+  </article>
+
+</section>
+
   </main>
 
-  <script src="sidepanel.js"></script>
+  
+<script>
+const workbookLinks = {
+  BM: "https://1drv.ms/x/c/4961b8ac6bbaac6f/IQCtDgzOCHGjTK_L6C3QyOc5AcB-ZyKX6XDEqjYaydjtGbI",
+  TMS: "https://onedrive.live.com/:x:/g/personal/4961B8AC6BBAAC6F/IQAxpWWU2rnuSpHOGknkuDZnAcEMf_cJanDU-tsUZ4WTAhk?resid=4961B8AC6BBAAC6F!s9465a531b9da4aee91ce1a49e4b83667&ithint=file%2Cxlsx&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy80OTYxYjhhYzZiYmFhYzZmL0lRQXhwV1dVMnJudVNwSE9Ha25rdURabkFjRU1mX2NKYW5EVS10c1VaNFdUQWhr",
+  WKM: "https://1drv.ms/x/c/4961b8ac6bbaac6f/IQCrB1sJPbTpQ49jE3dOrQ4_AX7Lg4-oCmZiuRufJF4sFlY"
+};
+
+function openWorkbook(site) {
+  const url = workbookLinks[site];
+
+  if (!url) {
+    alert("Workbook link is not available.");
+    return;
+  }
+
+  window.open(url, "_blank");
+}
+</script>
+
+<script src="sidepanel.js"></script>
 </body>
 </html>
