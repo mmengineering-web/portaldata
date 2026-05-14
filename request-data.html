@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Production — One Portal Data</title>
+  <title>Request Data — One Portal Data</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet"/>
 </head>
-<body class="production-page">
+<body class="exploration-page request-data-page">
   <button class="op-sidebar-toggle" id="opSidebarToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
   <aside class="op-sidebar" id="opSidebar" aria-label="Main navigation">
     <div class="op-sidebar-brand">
@@ -61,85 +61,78 @@
     <div class="nav-logo">One Portal Data</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="production.html" class="active">Production</a></li>
-      <li><a href="exploration.html">Exploration</a></li>
+      <li><a href="production.html">Production</a></li>
+      <li><a href="exploration.html" class="active">Exploration</a></li>
       <li><a href="documents.html">Documents</a></li>
       <li><a href="mining-tools.html">Mining Tools</a></li>
       <li><a href="help.html">Help</a></li>
     </ul>
   </nav>
 
-  <!-- BREADCRUMB -->
+  
+
   <div class="breadcrumb">
     <a href="index.html">Home</a>
     <span class="sep">›</span>
-    <span class="current">Production</span>
+    <a href="exploration.html">Exploration</a>
+    <span class="sep">›</span>
+    <span class="current">Request Data</span>
   </div>
 
-  <!-- PAGE HERO -->
-  <section class="page-hero">
+  <section class="page-hero request-landing-hero">
     <div class="page-hero-text">
-      <span class="hero-tag">Operations</span>
-      <h1>Production<strong>Hub</strong></h1>
-      <p>The central hub for <strong>operational monitoring</strong> — including performance dashboards, daily data input, data sources, and master data to support data-driven decision making.</p>
+      <span class="hero-tag request-tag">Exploration Request</span>
+      <h1>Request<strong>Data</strong></h1>
+      <p>Submit and manage exploration data needs through a focused request workspace for datasets, spatial files, maps, and supporting technical documents.</p>
+      <div class="request-hero-actions">
+        <a href="#request-options" class="btn-dark-rounded request-primary">Start Request</a>
+        <a href="interactive-maps.html" class="btn-dark-rounded request-secondary">Open Interactive Maps</a>
+      </div>
     </div>
     <div class="page-hero-images">
-      <div class="page-visual">
-        <div class="pv-header">
-          <span class="pv-title">Production Overview</span>
-          <span class="pv-badge">Live</span>
+      <div class="request-visual-card">
+        <div class="request-orbit"></div>
+        <div class="request-card-top">
+          <span>Request Queue</span>
+          <strong>Exploration</strong>
         </div>
-        <div class="pv-metric">
-          <span class="pv-metric-label">Today's Output</span>
-          <span class="pv-metric-value highlight">24,820 WMT</span>
+        <div class="request-flow">
+          <div><b>01</b><span>Define data need</span></div>
+          <div><b>02</b><span>Attach spatial context</span></div>
+          <div><b>03</b><span>Review and follow up</span></div>
         </div>
-        <div class="pv-metric">
-          <span class="pv-metric-label">Target Achievement</span>
-          <span class="pv-metric-value positive">▲ 96.4%</span>
-        </div>
-        <div class="pv-metric">
-          <span class="pv-metric-label">Active Equipment</span>
-          <span class="pv-metric-value">18 / 21</span>
-        </div>
-        <div class="pv-bar-group">
-          <div class="pv-bar-label">Weekly Trend</div>
-          <div class="pv-bars">
-            <div class="pv-bar h55"></div>
-            <div class="pv-bar h75"></div>
-            <div class="pv-bar h60"></div>
-            <div class="pv-bar h80"></div>
-            <div class="pv-bar h65"></div>
-            <div class="pv-bar h90 active"></div>
-            <div class="pv-bar h80 active"></div>
-          </div>
+        <div class="request-mini-map">
+          <span class="rm-poly a"></span>
+          <span class="rm-poly b"></span>
+          <span class="rm-pin">+</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHAT ARE YOU LOOKING FOR -->
-  <section class="looking-section production-finder">
-    <div class="looking-inner production-finder-card">
-      <div class="looking-text production-finder-copy">
-        <span class="finder-eyebrow">Production Shortcut</span>
-        <h2>What are you looking for?</h2>
-        <p>Choose the workspace you need and jump directly to dashboards, data submissions, or dashboard usage guidance.</p>
+  <section class="request-overview-section" id="request-options">
+    <div class="request-overview-inner">
+      <div class="request-section-heading">
+        <span class="finder-eyebrow green-blue-eyebrow">Request Workspace</span>
+        <h2>Request exploration data with clear context</h2>
+        <p>Use this page as the entry point for requesting exploration datasets, map layers, KML/SHP support files, WIUP references, forest-status context, or other spatial and technical materials needed for project review.</p>
       </div>
-      <div class="finder-actions">
-        <a href="dashboard.html" class="finder-card">
-          <span class="finder-icon subtle-icon">DB</span>
-          <strong>Dashboard</strong>
-          <small>Open production performance overview</small>
+
+      <div class="request-card-grid">
+        <a class="request-action-card featured" href="#">
+          <span class="request-action-icon">RD</span>
+          <strong>Request Exploration Data</strong>
+          <small>Submit a new request for exploration datasets, project references, spatial files, or supporting documents.</small>
         </a>
-        <a href="data-inputs.html" class="finder-card">
-          <span class="finder-icon subtle-icon">IN</span>
-          <strong>Data Inputs</strong>
-          <small>Jump to required submission forms</small>
+        <a class="request-action-card" href="interactive-maps.html">
+          <span class="request-action-icon">IM</span>
+          <strong>Review Interactive Maps</strong>
+          <small>Open the map catalogue before submitting a request and confirm the spatial context you need.</small>
         </a>
-        <a href="guidelines.html" class="finder-card">
-          <span class="finder-icon subtle-icon">GD</span>
-          <strong>Guidelines</strong>
-          <small>Read mapped PDF guide pages</small>
+        <a class="request-action-card" href="documents.html">
+          <span class="request-action-icon">DC</span>
+          <strong>Check Documents</strong>
+          <small>Browse available reports, templates, and supporting references related to exploration requests.</small>
         </a>
       </div>
     </div>
