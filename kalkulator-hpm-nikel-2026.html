@@ -32,7 +32,8 @@
       <div class="op-nav-group" data-group="exploration">
         <button class="op-nav-parent" type="button" aria-expanded="false"><span class="op-nav-arrow" aria-hidden="true"></span><span class="op-nav-icon">E</span><em>Exploration</em></button>
         <div class="op-nav-children">
-          <a href="exploration.html#request-data" class="op-nav-child" data-nav="request-data"><span></span><em>Request Data</em></a>
+          <a href="request-data.html" class="op-nav-child" data-nav="request-data"><span></span><em>Request Data</em></a>
+          <a href="interactive-maps.html" class="op-nav-child" data-nav="interactive-maps"><span></span><em>Interactive Maps</em></a>
         </div>
       </div>
       <div class="op-nav-group" data-group="documents">
@@ -104,28 +105,28 @@
     <div class="calc-main">
       <div class="input-column">
         <div class="formula-card stack-card">
-          <div class="section-label">Formula HPM Bijah Nikel — New Formula (Kepmen 144/2026)</div>
+          <div class="section-label">Nickel Ore HPM Formula — New Formula (Kepmen 144/2026)</div>
           <div class="formula-text">
-            <span class="hl">HPM</span> = [(%Ni × CF<sub>Bijah Nikel</sub> × HMA<sub>Nikel</sub>)<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (%Fe × CF<sub>Besi</sub> × HMA<sub>Bijih Besi</sub> × 100)<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (%Co × CF<sub>Kobalt</sub> × HMA<sub>Kobalt</sub>)<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (%Cr × CF<sub>Krom</sub> × HMA<sub>Bijih Krom</sub> × 100)] × (1−MC)
+            <span class="hl">HPM</span> = [(%Ni × CF<sub>Nickel Ore</sub> × HMA<sub>Nickel</sub>)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (%Fe × CF<sub>Iron</sub> × HMA<sub>Iron Ore</sub> × 100)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (%Co × CF<sub>Cobalt</sub> × HMA<sub>Cobalt</sub>)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (%Cr × CF<sub>Chromium</sub> × HMA<sub>Chrome Ore</sub> × 100)] × (1−MC)
           </div>
           <div class="cf-rules">
             <div class="cf-rule">
-              <div class="cf-label">CF Bijih Nikel</div>
+              <div class="cf-label">Nickel Ore CF</div>
               <div class="cf-val">30% @1.6%Ni ± 1%/0.1%Ni</div>
             </div>
             <div class="cf-rule">
-              <div class="cf-label">CF Besi Ikutan</div>
+              <div class="cf-label">Associated Iron CF</div>
               <div class="cf-val">30% (tetap)</div>
             </div>
             <div class="cf-rule">
-              <div class="cf-label">CF Kobalt Ikutan</div>
+              <div class="cf-label">Associated Cobalt CF</div>
               <div class="cf-val">30% (tetap)</div>
             </div>
             <div class="cf-rule">
-              <div class="cf-label">CF Krom Ikutan</div>
+              <div class="cf-label">Associated Chromium CF</div>
               <div class="cf-val">10% (tetap)</div>
             </div>
           </div>
@@ -166,7 +167,7 @@
                 </div>
                 <div class="cf-live">
                   <div>
-                    <div class="cf-label-sm">CF Bijih Nikel (otomatis)</div>
+                    <div class="cf-label-sm">Nickel Ore CF (automatic)</div>
                     <div class="cf-number" id="cf-val-s">32%</div>
                   </div>
                   <div class="cf-desc" id="cf-desc-s">Ni = 1.8% → 30% + 2% = 32%</div>
@@ -201,7 +202,7 @@
                 </div>
                 <div class="cf-live">
                   <div>
-                    <div class="cf-label-sm">CF Bijih Nikel (otomatis)</div>
+                    <div class="cf-label-sm">Nickel Ore CF (automatic)</div>
                     <div class="cf-number" id="cf-val-l">23%</div>
                   </div>
                   <div class="cf-desc" id="cf-desc-l">Ni = 0.9% → 30% − 7% = 23%</div>
@@ -210,24 +211,24 @@
             </div>
 
             <div class="compact-box">
-              <div class="section-label">HMA — Harga Mineral Acuan</div>
+              <div class="section-label">HMA — Mineral Reference Price</div>
 
               <div class="grid-2">
                 <div class="field">
                   <label>Bulan HMA</label>
                   <select id="hma_month"></select>
-                  <span class="hint">Pilih bulan HMA untuk perhitungan</span>
+                  <span class="hint">Select the HMA month for the calculation</span>
                 </div>
                 <div class="field">
                   <label>Periode HMA</label>
                   <select id="hma_period"></select>
-                  <span class="hint">Pilihan akan mengisi HMA otomatis</span>
+                  <span class="hint">The selection will autofill HMA values</span>
                 </div>
               </div>
 
               <div class="hma-meta">
                 <div>
-                  <span class="hma-meta-label">Pilihan Aktif</span>
+                  <span class="hma-meta-label">Active Selection</span>
                   <strong id="hma_selected_label">April 2026 (Periode Kedua)</strong>
                 </div>
                 <div>
@@ -238,20 +239,20 @@
 
               <div class="grid-2">
                 <div class="field expert-only">
-                  <label>HMA Nikel</label>
+                  <label>HMA Nickel</label>
                   <input type="number" id="hma_ni" value="16933.57" step="0.01" min="0" />
                 </div>
                 <div class="field expert-only">
-                  <label>HMA Kobalt</label>
+                  <label>HMA Cobalt</label>
                   <input type="number" id="hma_co" value="55852.86" step="0.01" min="0" />
                 </div>
                 <div class="field expert-only">
-                  <label>HMA Bijih Besi</label>
+                  <label>HMA Iron Ore</label>
                   <input type="number" id="hma_fe" value="1.58" step="0.01" min="0" />
                   <span class="hint">Nilai raw, dikali 100 dalam formula</span>
                 </div>
                 <div class="field expert-only">
-                  <label>HMA Bijih Krom</label>
+                  <label>HMA Chrome Ore</label>
                   <input type="number" id="hma_cr" value="6.37" step="0.01" min="0" />
                   <span class="hint">Nilai raw, dikali 100 dalam formula</span>
                 </div>
@@ -276,22 +277,22 @@
             <div>Ketentuan</div>
           </div>
           <div class="cf-table-row">
-            <div class="cf-comp">Nikel</div>
+            <div class="cf-comp">Nickel</div>
             <div class="cf-val-main highlight" id="cf-table-ni">30.0%</div>
             <div class="cf-rule-text">Base 30% @ 1.6% Ni · ±1% per 0.1% Ni</div>
           </div>
           <div class="cf-table-row">
-            <div class="cf-comp">Besi ikutan</div>
+            <div class="cf-comp">Associated Iron</div>
             <div class="cf-val-main">30%</div>
             <div class="cf-rule-text" id="cf-table-fe-rule">Fixed 30% — Fe ≤ 35%</div>
           </div>
           <div class="cf-table-row">
-            <div class="cf-comp">Kobalt<br />ikutan</div>
+            <div class="cf-comp">Associated<br />Cobalt</div>
             <div class="cf-val-main">30%</div>
             <div class="cf-rule-text" id="cf-table-co-rule">Fixed 30% — Co ≥ 0.05%</div>
           </div>
           <div class="cf-table-row">
-            <div class="cf-comp">Krom ikutan</div>
+            <div class="cf-comp">Associated Chromium</div>
             <div class="cf-val-main">10%</div>
             <div class="cf-rule-text">Fixed 10%</div>
           </div>
@@ -301,7 +302,7 @@
       <div class="result-column">
         <div class="result-panel">
           <div class="action-row">
-            <div class="action-note" id="action-note">Mode Simple menampilkan input minimum. Fe, Co, Cr, dan HMA manual memakai nilai yang sudah tersimpan.</div>
+            <div class="action-note" id="action-note">Simple Mode shows minimum inputs. Fe, Co, Cr, and manual HMA use saved default values.</div>
             <button class="btn-calc btn-secondary" type="button" onclick="downloadPDF()">Download PDF A4</button>
           </div>
 
@@ -309,7 +310,7 @@
 
           <div class="result-wrap" id="result-section">
             <div class="result-hero">
-              <div class="result-hero-label">HPM Bijih Nikel</div>
+              <div class="result-hero-label">Nickel Ore HPM</div>
               <div class="result-hero-val" id="res-hpm">–</div>
               <div class="result-hero-unit">USD / WMT (Wet Metric Ton)</div>
             </div>
@@ -317,19 +318,19 @@
             <div class="breakdown-card">
               <div class="section-label">Rincian Perhitungan</div>
               <div class="br-row">
-                <div class="br-label">Komponen Nikel<small id="br-ni-formula">–</small></div>
+                <div class="br-label">Nickel Component<small id="br-ni-formula">–</small></div>
                 <div class="br-val" id="res-ni">–</div>
               </div>
               <div class="br-row">
-                <div class="br-label">Komponen Besi<small id="br-fe-formula">–</small></div>
+                <div class="br-label">Iron Component<small id="br-fe-formula">–</small></div>
                 <div class="br-val" id="res-fe">–</div>
               </div>
               <div class="br-row">
-                <div class="br-label">Komponen Kobalt<small id="br-co-formula">–</small></div>
+                <div class="br-label">Cobalt Component<small id="br-co-formula">–</small></div>
                 <div class="br-val" id="res-co">–</div>
               </div>
               <div class="br-row">
-                <div class="br-label">Komponen Krom<small id="br-cr-formula">–</small></div>
+                <div class="br-label">Chromium Component<small id="br-cr-formula">–</small></div>
                 <div class="br-val" id="res-cr">–</div>
               </div>
               <hr class="br-divider" />
@@ -369,7 +370,7 @@
     </div>
 
     <div class="result-hero pdf-result-hero">
-      <div class="result-hero-label">HPM Bijih Nikel</div>
+      <div class="result-hero-label">Nickel Ore HPM</div>
       <div class="result-hero-val" id="pdf-res-hpm">-</div>
       <div class="result-hero-unit">USD / WMT (Wet Metric Ton)</div>
     </div>
@@ -389,22 +390,22 @@
         <div>Ketentuan</div>
       </div>
       <div class="cf-table-row">
-        <div class="cf-comp">Nikel</div>
+        <div class="cf-comp">Nickel</div>
         <div class="cf-val-main highlight" id="pdf-cf-table-ni">30.0%</div>
         <div class="cf-rule-text">Base 30% @ 1.6% Ni · ±1% per 0.1% Ni</div>
       </div>
       <div class="cf-table-row">
-        <div class="cf-comp">Besi ikutan</div>
+        <div class="cf-comp">Associated Iron</div>
         <div class="cf-val-main">30%</div>
         <div class="cf-rule-text" id="pdf-cf-table-fe-rule">Fixed 30% — Fe ≤ 35%</div>
       </div>
       <div class="cf-table-row">
-        <div class="cf-comp">Kobalt<br />ikutan</div>
+        <div class="cf-comp">Associated<br />Cobalt</div>
         <div class="cf-val-main">30%</div>
         <div class="cf-rule-text" id="pdf-cf-table-co-rule">Fixed 30% — Co ≥ 0.05%</div>
       </div>
       <div class="cf-table-row">
-        <div class="cf-comp">Krom ikutan</div>
+        <div class="cf-comp">Associated Chromium</div>
         <div class="cf-val-main">10%</div>
         <div class="cf-rule-text">Fixed 10%</div>
       </div>
@@ -412,10 +413,10 @@
 
     <div class="breakdown-card">
       <div class="section-label">Rincian Perhitungan</div>
-      <div class="br-row"><div class="br-label">Komponen Nikel<small id="pdf-br-ni-formula">-</small></div><div class="br-val" id="pdf-res-ni">-</div></div>
-      <div class="br-row"><div class="br-label">Komponen Besi<small id="pdf-br-fe-formula">-</small></div><div class="br-val" id="pdf-res-fe">-</div></div>
-      <div class="br-row"><div class="br-label">Komponen Kobalt<small id="pdf-br-co-formula">-</small></div><div class="br-val" id="pdf-res-co">-</div></div>
-      <div class="br-row"><div class="br-label">Komponen Krom<small id="pdf-br-cr-formula">-</small></div><div class="br-val" id="pdf-res-cr">-</div></div>
+      <div class="br-row"><div class="br-label">Nickel Component<small id="pdf-br-ni-formula">-</small></div><div class="br-val" id="pdf-res-ni">-</div></div>
+      <div class="br-row"><div class="br-label">Iron Component<small id="pdf-br-fe-formula">-</small></div><div class="br-val" id="pdf-res-fe">-</div></div>
+      <div class="br-row"><div class="br-label">Cobalt Component<small id="pdf-br-co-formula">-</small></div><div class="br-val" id="pdf-res-co">-</div></div>
+      <div class="br-row"><div class="br-label">Chromium Component<small id="pdf-br-cr-formula">-</small></div><div class="br-val" id="pdf-res-cr">-</div></div>
       <hr class="br-divider" />
       <div class="br-row no-border"><div class="br-label">Subtotal (sebelum MC)</div><div class="br-val" id="pdf-res-sub">-</div></div>
       <div class="br-row no-border"><div class="br-label">× Faktor (1 − MC)</div><div class="br-val" id="pdf-res-mc">-</div></div>
@@ -561,7 +562,7 @@
         const parsed = parseGoogleSheetResponse(text);
         if (parsed.length) {
           hmaDataset = parsed;
-          document.getElementById('hma_source_label').textContent = 'Google Spreadsheet aktif';
+          document.getElementById('hma_source_label').textContent = 'Google Spreadsheet active';
         } else {
           document.getElementById('hma_source_label').textContent = 'Fallback dataset lokal';
         }
@@ -649,8 +650,8 @@
       });
 
       document.getElementById('action-note').textContent = mode === 'simple'
-        ? 'Mode Simple menampilkan input minimum. Fe, Co, Cr, dan HMA manual memakai nilai yang sudah tersimpan.'
-        : 'Mode Expert menampilkan semua field detail dan HMA manual untuk kontrol penuh.';
+        ? 'Simple Mode shows minimum inputs. Fe, Co, Cr, and manual HMA use saved default values.'
+        : 'Expert Mode shows all detailed fields and manual HMA for full control.';
       calculate();
     }
 
@@ -697,7 +698,7 @@
       errBox.innerHTML = '';
 
       if ([ni, fe, co, cr, mc, hma_ni, hma_co, hma_fe, hma_cr].some(v => isNaN(v) || v < 0)) {
-        errBox.innerHTML = '<div class="alert alert-error"><span class="alert-icon">✕</span>Harap isi semua field dengan angka yang valid.</div>';
+        errBox.innerHTML = '<div class="alert alert-error"><span class="alert-icon">✕</span>Please fill in all fields with valid numbers.</div>';
         return;
       }
 
@@ -766,11 +767,11 @@
       document.getElementById('cf-table-fe-rule').textContent = cfFeRule;
       document.getElementById('cf-table-co-rule').textContent = cfCoRule;
 
-      let notes = '<div class="alert alert-success"><span class="alert-icon">✓</span>Menggunakan HMA <strong>' + selectedMonth + ' (' + selectedPeriod + ')</strong> untuk perhitungan.</div>';
-      notes += '<div class="alert alert-success"><span class="alert-icon">✓</span>CF Bijih Nikel = <strong>' + cf_ni_pct + '%</strong> · Basis 1.6%Ni = 30%, setiap ±0.1%Ni → ±1%.</div>';
+      let notes = '<div class="alert alert-success"><span class="alert-icon">✓</span>Using HMA <strong>' + selectedMonth + ' (' + selectedPeriod + ')</strong> for the calculation.</div>';
+      notes += '<div class="alert alert-success"><span class="alert-icon">✓</span>Nickel Ore CF = <strong>' + cf_ni_pct + '%</strong> · Basis 1.6% Ni = 30%; each ±0.1% Ni changes by ±1%.</div>';
       if (!fe_active) notes += '<div class="alert alert-warning"><span class="alert-icon">⚠</span>Fe = ' + fe + '% melebihi 35% → komponen besi dikecualikan.</div>';
       if (!co_active) notes += '<div class="alert alert-warning"><span class="alert-icon">⚠</span>Co = ' + co + '% di bawah 0.05% → komponen kobalt dikecualikan.</div>';
-      if (currentMode === 'simple') notes += '<div class="alert alert-success"><span class="alert-icon">✓</span>Mode Simple aktif: field expert disembunyikan, namun nilai default tetap dipakai dalam perhitungan.</div>';
+      if (currentMode === 'simple') notes += '<div class="alert alert-success"><span class="alert-icon">✓</span>Simple Mode is active: expert fields are hidden, but default values are still used in the calculation.</div>';
       document.getElementById('calc-notes').innerHTML = notes;
 
       syncPdfReport({

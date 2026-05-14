@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>One Portal Data</title>
+  <title>Interactive Maps — One Portal Data</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet"/>
 </head>
-<body>
-  <button class="op-sidebar-toggle" id="opSidebarToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+<body class="interactive-maps-page">
+<button class="op-sidebar-toggle" id="opSidebarToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
   <aside class="op-sidebar" id="opSidebar" aria-label="Main navigation">
     <div class="op-sidebar-brand">
       <div class="op-brand-mark">OP</div>
@@ -56,110 +56,69 @@
     </nav>
   </aside>
 
-<!-- NAV -->
   <nav class="navbar">
     <div class="nav-logo">One Portal Data</div>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="production.html">Production</a></li>
-      <li><a href="exploration.html">Exploration</a></li>
+      <li><a href="exploration.html" class="active">Exploration</a></li>
       <li><a href="documents.html">Documents</a></li>
       <li><a href="mining-tools.html">Mining Tools</a></li>
       <li><a href="help.html">Help</a></li>
     </ul>
   </nav>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-card">
-      <span class="hero-tag">Exploration &amp; Mining Management</span>
-      <h1 class="hero-title">One Portal<strong>Data</strong></h1>
-      <p class="hero-desc">A centralized platform to access, manage, and monitor all operational data in one place, supporting efficient and data-driven decision making.</p>
-      <a href="#platform-modules" class="btn-learn">Get Started</a>
-    </div>
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="exploration.html">Exploration</a>
+    <span class="sep">›</span>
+    <span class="current">Interactive Maps</span>
+  </div>
 
-    <div class="hero-image">
-      <!-- Clean data visual replacing SVG landscape -->
-      <div class="hero-visual">
-        <div class="hv-card">
-          <div class="hv-label">Production</div>
-          <div class="hv-value">94.2%</div>
+  <section class="page-hero interactive-hero">
+    <div class="page-hero-text">
+      <span class="hero-tag">Interactive Maps</span>
+      <h1>Spatial<strong>Workspace</strong></h1>
+      <p>Access WebGIS to review company project distribution, WIUP boundaries, KLHK forest status, and uploaded KML overlays in a single interactive map environment.</p>
+      <div class="exploration-buttons hero-action-row">
+        <a href="webgis.html" class="btn-dark-rounded">Open WebGIS</a>
+      </div>
+    </div>
+    <div class="page-hero-images">
+      <div class="interactive-preview-card">
+        <div class="preview-toolbar"><span></span><span></span><span></span></div>
+        <div class="preview-map-grid">
+          <div class="preview-polygon p1"></div>
+          <div class="preview-polygon p2"></div>
+          <div class="preview-polygon p3"></div>
+          <div class="preview-pin">●</div>
         </div>
-        <div class="hv-card">
-          <div class="hv-label">Status</div>
-          <div class="hv-status-live">
-            <div class="hv-dot"></div>
-            <span >Live</span>
-          </div>
-        </div>
-        <div class="hv-card">
-          <div class="hv-label">Sites</div>
-          <div class="hv-value">12</div>
-        </div>
-        <div class="hv-card span2">
-          <div class="hv-label" >Output Trend (Quarterly)</div>
-          <div class="hv-bar">
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-        </div>
-        <div class="hv-card blue">
-          <div class="hv-label">Reports</div>
-          <div class="hv-value">↑ 18</div>
+        <div class="preview-stats">
+          <div><strong>Projects</strong><span>Spatial Distribution</span></div>
+          <div><strong>WIUP</strong><span>Boundary Context</span></div>
+          <div><strong>KLHK</strong><span>Forest Status</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MENU SECTION -->
-  <section class="menu-section" id="platform-modules">
-    <p class="menu-title">Platform Modules</p>
-    <h2 class="menu-section-heading">What would you like to access?</h2>
-    <div class="menu-grid">
-
-      <div class="menu-card">
-        <h3 class="menu-cat">Production</h3>
-        <ul>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="data-inputs.html">Data Inputs</a></li>
-          <li><a href="guidelines.html">Guideline</a></li>
-        </ul>
+  <section class="interactive-overview-section">
+    <div class="interactive-overview-inner">
+      <p class="section-label">Available Map</p>
+      <div class="exploration-text exploration-header">
+        <h2>WebGIS</h2>
+        <p class="interactive-lead">WebGIS is used to view the spatial distribution of owned projects, review WIUP distribution and forest status, and upload KML files to check whether layers overlap or not.</p>
       </div>
 
-      <div class="menu-card">
-        <h3 class="menu-cat">Exploration</h3>
-        <ul>
-          <li><a href="request-data.html">Request Data</a></li>
-          <li><a href="interactive-maps.html">Interactive Maps</a></li>
-        </ul>
+      <div class="explore-cards interactive-feature-grid single-map-card">
+        <a href="webgis.html" class="explore-card map-feature-card">
+          <div class="explore-card-icon subtle-icon">GIS</div>
+          <h3>WebGIS</h3>
+          <p>Open the interactive map to view Projects, WIUP boundaries, KLHK forest status, and KML overlay context.</p>
+          <div class="explore-card-cta">Open WebGIS →</div>
+        </a>
       </div>
-
-      <div class="menu-card">
-        <h3 class="menu-cat">Documents</h3>
-        <ul>
-          <li><a href="documents.html#reports">Reports</a></li>
-          <li><a href="documents.html#sops">SOPs</a></li>
-          <li><a href="documents.html#templates">Templates</a></li>
-        </ul>
-      </div>
-
-      <div class="menu-card">
-        <h3 class="menu-cat">Mining Tools</h3>
-        <ul>
-          <li><a href="kalkulator-hpm-nikel-2026.html">HPM Nickel Calculator</a></li>
-          <li><a href="drillhole-analysis.html">Drillhole Analysis</a></li>
-          <li><a href="mining-tools.html#hauling-cost">Hauling Cost Calculator</a></li>
-          <li><a href="mining-tools.html#revenue-projection">Revenue Projection</a></li>
-        </ul>
-      </div>
-
-      <div class="menu-card">
-        <h3 class="menu-cat">Help</h3>
-        <ul>
-          <li><a href="help.html">Contacts</a></li>
-          <li><a href="help.html">FAQ</a></li>
-        </ul>
-      </div>
-
     </div>
   </section>
 
