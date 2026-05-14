@@ -1,0 +1,267 @@
+
+/* ============================================================
+   WEBGIS — One Portal Data integrated white-blue theme
+   Keeps existing WebGIS functionality, restyles Leaflet controls/sidebar.
+   ============================================================ */
+.webgis-body {
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+}
+.webgis-shell {
+  position: fixed;
+  inset: 64px 0 0 0;
+  background: var(--bg);
+}
+#map {
+  width: 100%;
+  height: 100%;
+  background: #eaf1ff;
+  z-index: 1;
+}
+.webgis-map-heading {
+  position: absolute;
+  top: 18px;
+  left: 336px;
+  z-index: 900;
+  width: min(560px, calc(100vw - 380px));
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  padding: 18px 20px;
+  pointer-events: none;
+}
+.webgis-map-heading .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  margin-bottom: 10px;
+}
+.webgis-map-heading h1 {
+  margin: 0 0 6px;
+  color: var(--text-main);
+  font-size: clamp(1.2rem, 2vw, 1.9rem);
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+}
+.webgis-map-heading h1 strong { color: var(--primary); }
+.webgis-map-heading p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+#sidebar {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 300px;
+  max-width: calc(100vw - 92px);
+  height: calc(100% - 36px);
+  background: rgba(255,255,255,0.96);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  color: var(--text-main);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  z-index: 1200;
+  box-shadow: var(--shadow-lg);
+  overflow: visible;
+}
+#sidebar.collapsed { transform: translateX(-278px); }
+#toggleSidebar {
+  position: absolute;
+  top: 16px;
+  right: -44px;
+  width: 42px;
+  height: 42px;
+  background: var(--primary);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 0 14px 14px 0;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+#toggleSidebar:hover { background: var(--primary-dark); transform: translateX(2px); }
+#sidebar-content {
+  padding: 18px;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+#sidebar-content h3 {
+  color: var(--text-main);
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 16px 0 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+#sidebar-content h3:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+#sidebar-content h4 {
+  color: var(--primary);
+  font-size: 0.76rem;
+  margin: 10px 0 8px;
+  letter-spacing: 0.4px;
+}
+#sidebar label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-soft);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+#searchInput,
+#filterKomoditas,
+#basemapDropdown,
+#projectStatusFilter,
+#kmlInput {
+  width: 100%;
+  padding: 9px 10px;
+  margin-top: 4px;
+  background: var(--white);
+  color: var(--text-main);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  outline: none;
+  font-size: 0.86rem;
+  transition: all 0.2s ease;
+}
+#searchInput:focus,
+#filterKomoditas:focus,
+#basemapDropdown:focus,
+#projectStatusFilter:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(28,79,216,0.10);
+}
+.search-results {
+  max-height: 190px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text-main);
+  display: none;
+  border-radius: 12px;
+  padding: 6px 0;
+  z-index: 1400;
+  box-shadow: var(--shadow);
+}
+.search-item { padding: 8px 10px; cursor: pointer; font-size: 0.84rem; transition: all 0.16s ease; }
+.search-item:hover { background: var(--primary-soft); color: var(--primary); }
+.search-type { font-size: 0.72rem; color: var(--text-muted); }
+#layerList { list-style: none; padding-left: 0; margin: 0; }
+.layer-item {
+  display: block;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-sm);
+}
+.layer-header { display: flex; align-items: center; gap: 8px; width: 100%; }
+.layer-header label { margin: 0 !important; color: var(--text-main) !important; font-weight: 800 !important; }
+.layer-item .drag-handle { cursor: move; font-size: 17px; color: var(--primary); margin-right: 2px; }
+.expandBtn {
+  margin-left: auto;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border);
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 800;
+}
+.layer-options {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--primary-ultra);
+}
+.layer-options input[type="range"] { width: 100%; accent-color: var(--primary); }
+.project-status-checkboxes label,
+.project-status-check {
+  display: flex !important;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 7px;
+}
+.status-swatch,
+#legendProjects .box,
+.legend-box {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  border: 1px solid rgba(15,30,61,0.18);
+  border-radius: 4px;
+  flex: 0 0 auto;
+}
+#legendProjects .item,
+.legend-klhk .item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+}
+.legend-klhk {
+  margin-top: 10px;
+  padding: 10px;
+  background: var(--white);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
+}
+.legend-klhk .box { width: 16px; height: 16px; border: 1px solid rgba(15,30,61,0.30); }
+.legend-klhk .line { width: 26px; height: 0; border-top: 2px solid #AD40FF; }
+#kmlLayerList { color: var(--text-soft); font-size: 0.82rem; }
+.leaflet-control-minimap { border: 1px solid var(--border-strong) !important; border-radius: 14px; box-shadow: var(--shadow-md); overflow: hidden; }
+.leaflet-control-zoom { position: absolute !important; bottom: 70px !important; right: 14px !important; z-index: 1100 !important; }
+.leaflet-pm-toolbar { top: 20px !important; right: 14px !important; z-index: 1200 !important; }
+.leaflet-control a {
+  background-color: var(--white) !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-sm);
+}
+.leaflet-control a:hover { background-color: var(--primary-soft) !important; color: var(--primary-dark) !important; }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { border-radius: 14px; box-shadow: var(--shadow-md); }
+.leaflet-popup-content { color: var(--text-main); font-family: 'Barlow', sans-serif; }
+.leaflet-pane .leaflet-vector-pane canvas,
+.leaflet-vector-layer canvas { pointer-events: none !important; }
+.leaflet-popup, .leaflet-popup-content, .leaflet-popup-content * { pointer-events: auto !important; }
+@media (max-width: 900px) {
+  .webgis-map-heading { display: none; }
+  #sidebar { top: 12px; left: 12px; height: calc(100% - 24px); }
+  #sidebar.collapsed { transform: translateX(-278px); }
+}
+
+
+/* User-requested WebGIS cleanup */
+.webgis-map-heading { display: none !important; }
+#sidebar { transform: none; }
+#sidebar.collapsed { transform: translateX(-278px); }
+.webgis-shell #map { height: 100%; }
+
+@media (max-width: 900px) {
+  #sidebar { transform: translateX(-278px); }
+  #sidebar:not(.collapsed) { transform: none; }
+}
