@@ -95,7 +95,7 @@
     </div>
 
     <div class="mode-row">
-      <div class="mode-label">Tampilan Input</div>
+      <div class="mode-label">Input Display</div>
       <div class="mode-tabs">
         <button class="mode-btn active" type="button" onclick="setMode('simple', this)">Simple</button>
         <button class="mode-btn" type="button" onclick="setMode('expert', this)">Expert</button>
@@ -119,21 +119,21 @@
             </div>
             <div class="cf-rule">
               <div class="cf-label">Associated Iron CF</div>
-              <div class="cf-val">30% (tetap)</div>
+              <div class="cf-val">30% (fixed)</div>
             </div>
             <div class="cf-rule">
               <div class="cf-label">Associated Cobalt CF</div>
-              <div class="cf-val">30% (tetap)</div>
+              <div class="cf-val">30% (fixed)</div>
             </div>
             <div class="cf-rule">
               <div class="cf-label">Associated Chromium CF</div>
-              <div class="cf-val">10% (tetap)</div>
+              <div class="cf-val">10% (fixed)</div>
             </div>
           </div>
         </div>
 
         <div class="input-card stack-card">
-          <div class="section-label">Input Data Utama</div>
+          <div class="section-label">Input Main Data</div>
 
           <div class="compact-input">
             <div class="compact-box">
@@ -142,22 +142,22 @@
               <div id="section-saprolite">
                 <div class="grid-2">
                   <div class="field">
-                    <label>%Ni (kadar nikel)</label>
+                    <label>%Ni (Nickel Content)</label>
                     <input type="number" id="ni" value="1.80" step="0.01" min="0" max="10" />
                     <span class="hint">Min 1.6% untuk saprolite</span>
                   </div>
                   <div class="field expert-only">
-                    <label>%Fe (kadar besi)</label>
+                    <label>%Fe (Iron Content)</label>
                     <input type="number" id="fe" value="14.00" step="0.1" min="0" />
                     <span class="hint">Dihitung jika %Fe ≤ 35%</span>
                   </div>
                   <div class="field expert-only">
-                    <label>%Co (kadar kobalt)</label>
+                    <label>%Co (Cobalt Content)</label>
                     <input type="number" id="co" value="0.05" step="0.001" min="0" />
-                    <span class="hint">Dihitung jika %Co ≥ 0.05%</span>
+                    <span class="hint">Calculated if %Co ≥ 0.05%</span>
                   </div>
                   <div class="field expert-only">
-                    <label>%Cr (kadar krom)</label>
+                    <label>%Cr (Chrome Content)</label>
                     <input type="number" id="cr" value="1.00" step="0.01" min="0" />
                   </div>
                   <div class="field">
@@ -177,22 +177,22 @@
               <div id="section-limonite" style="display:none;">
                 <div class="grid-2">
                   <div class="field">
-                    <label>%Ni (kadar nikel)</label>
+                    <label>%Ni (Nickel Content)</label>
                     <input type="number" id="ni_l" value="0.90" step="0.01" min="0" max="10" />
-                    <span class="hint">Tipe limonite &lt; 1.6%</span>
+                    <span class="hint">Limonite Type &lt; 1.6%</span>
                   </div>
                   <div class="field expert-only">
-                    <label>%Fe (kadar besi)</label>
+                    <label>%Fe (Iron Content)</label>
                     <input type="number" id="fe_l" value="35.00" step="0.1" min="0" />
-                    <span class="hint">Dihitung jika %Fe ≤ 35%</span>
+                    <span class="hint">Calculated If %Fe ≤ 35%</span>
                   </div>
                   <div class="field expert-only">
-                    <label>%Co (kadar kobalt)</label>
+                    <label>%Co (Cobalt Content)</label>
                     <input type="number" id="co_l" value="0.08" step="0.001" min="0" />
-                    <span class="hint">Dihitung jika %Co ≥ 0.05%</span>
+                    <span class="hint">Calculated If %Co ≥ 0.05%</span>
                   </div>
                   <div class="field expert-only">
-                    <label>%Cr (kadar krom)</label>
+                    <label>%Cr (Chrome Content)</label>
                     <input type="number" id="cr_l" value="0.50" step="0.01" min="0" />
                   </div>
                   <div class="field">
@@ -232,7 +232,7 @@
                   <strong id="hma_selected_label">April 2026 (Periode Kedua)</strong>
                 </div>
                 <div>
-                  <span class="hma-meta-label">Sumber Data</span>
+                  <span class="hma-meta-label">Data Source</span>
                   <span id="hma_source_label">Spreadsheet HMA</span>
                 </div>
               </div>
@@ -249,18 +249,18 @@
                 <div class="field expert-only">
                   <label>HMA Iron Ore</label>
                   <input type="number" id="hma_fe" value="1.58" step="0.01" min="0" />
-                  <span class="hint">Nilai raw, dikali 100 dalam formula</span>
+                  <span class="hint">Raw value, multiplied by 100 in the formula</span>
                 </div>
                 <div class="field expert-only">
                   <label>HMA Chrome Ore</label>
                   <input type="number" id="hma_cr" value="6.37" step="0.01" min="0" />
-                  <span class="hint">Nilai raw, dikali 100 dalam formula</span>
+                  <span class="hint">Raw value, multiplied by 100 in the formula</span>
                 </div>
               </div>
 
               <div class="cf-live">
                 <div>
-                  <div class="cf-label-sm">Ringkasan HMA Aktif</div>
+                  <div class="cf-label-sm">Active HMA Summary</div>
                   <div class="cf-number" id="hma-compact-ni">Ni 16.933,57</div>
                 </div>
                 <div class="cf-desc" id="hma-compact-desc">Co 55.852,86 · Fe 1,58 · Cr 6,37</div>
@@ -274,7 +274,7 @@
           <div class="cf-table-head">
             <div>Component</div>
             <div>CF</div>
-            <div>Ketentuan</div>
+            <div>Spesification</div>
           </div>
           <div class="cf-table-row">
             <div class="cf-comp">Nickel</div>
@@ -316,7 +316,7 @@
             </div>
 
             <div class="breakdown-card">
-              <div class="section-label">Rincian Perhitungan</div>
+              <div class="section-label">Detailed Calculation</div>
               <div class="br-row">
                 <div class="br-label">Nickel Component<small id="br-ni-formula">–</small></div>
                 <div class="br-val" id="res-ni">–</div>
@@ -339,7 +339,7 @@
                 <div class="br-val" id="res-sub">–</div>
               </div>
               <div class="br-row no-border">
-                <div class="br-label">× Faktor (1 − MC)</div>
+                <div class="br-label">× Factor (1 − MC)</div>
                 <div class="br-val" id="res-mc">–</div>
               </div>
               <hr class="br-divider" />
@@ -355,8 +355,8 @@
     </div>
 
     <div class="calc-footer">
-      <span>Berdasarkan <a href="https://www.minerba.esdm.go.id" target="_blank">Kepmen ESDM No.144.K/MB.01/MEM.B/2026</a></span>
-      <a href="https://www.minerba.esdm.go.id/harga_acuan" target="_blank">HMA Terbaru → minerba.esdm.go.id</a>
+      <span>Based on <a href="https://www.minerba.esdm.go.id" target="_blank">Kepmen ESDM No.144.K/MB.01/MEM.B/2026</a></span>
+      <a href="https://www.minerba.esdm.go.id/harga_acuan" target="_blank">Newest HMA → minerba.esdm.go.id</a>
     </div>
   </div>
 
@@ -376,7 +376,7 @@
     </div>
 
     <div class="pdf-grid">
-      <div class="pdf-mini"><div class="pdf-mini-label">Tipe Ore</div><div class="pdf-mini-value" id="pdf-ore-type">-</div></div>
+      <div class="pdf-mini"><div class="pdf-mini-label">Ore Type</div><div class="pdf-mini-value" id="pdf-ore-type">-</div></div>
       <div class="pdf-mini"><div class="pdf-mini-label">Moisture Content</div><div class="pdf-mini-value" id="pdf-mc-value">-</div></div>
       <div class="pdf-mini"><div class="pdf-mini-label">Ni / Fe</div><div class="pdf-mini-value" id="pdf-grade-ni-fe">-</div></div>
       <div class="pdf-mini"><div class="pdf-mini-label">Co / Cr</div><div class="pdf-mini-value" id="pdf-grade-co-cr">-</div></div>
@@ -387,7 +387,7 @@
       <div class="cf-table-head">
         <div>Component</div>
         <div>CF</div>
-        <div>Ketentuan</div>
+        <div>Spesification</div>
       </div>
       <div class="cf-table-row">
         <div class="cf-comp">Nickel</div>
@@ -412,7 +412,7 @@
     </div>
 
     <div class="breakdown-card">
-      <div class="section-label">Rincian Perhitungan</div>
+      <div class="section-label">Detailed Calculation</div>
       <div class="br-row"><div class="br-label">Nickel Component<small id="pdf-br-ni-formula">-</small></div><div class="br-val" id="pdf-res-ni">-</div></div>
       <div class="br-row"><div class="br-label">Iron Component<small id="pdf-br-fe-formula">-</small></div><div class="br-val" id="pdf-res-fe">-</div></div>
       <div class="br-row"><div class="br-label">Cobalt Component<small id="pdf-br-co-formula">-</small></div><div class="br-val" id="pdf-res-co">-</div></div>
@@ -425,7 +425,7 @@
       <div class="calc-notes" id="pdf-calc-notes"></div>
     </div>
 
-    <div class="pdf-footer">Berdasarkan Kepmen ESDM No.144/2026 · Dataset HMA terintegrasi dari spreadsheet.</div>
+    <div class="pdf-footer">Based on Kepmen ESDM No.144/2026 · HMA Dataset integrated from spreadsheet.</div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -874,7 +874,7 @@
         const period = document.getElementById('hma_period').value.replace(/\s+/g, '_');
         pdf.save(`HPM_Nickel_${month}_${period}.pdf`);
       } catch (err) {
-        alert('Gagal membuat PDF. Pastikan browser mengizinkan script eksternal dan coba lagi.');
+        alert('Failed creating PDF. Make sure external script allowed in the browser and try again.');
         console.error(err);
       } finally {
         element.style.display = oldDisplay || 'none';
