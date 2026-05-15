@@ -115,7 +115,7 @@
           <div class="cf-rules">
             <div class="cf-rule">
               <div class="cf-label">Nickel Ore CF</div>
-              <div class="cf-val">30% @1.6%Ni ± 1%/0.1%Ni</div>
+              <div class="cf-val">30% @1.6%Ni ± 0.1%/0.01%Ni</div>
             </div>
             <div class="cf-rule">
               <div class="cf-label">Associated Iron CF</div>
@@ -279,7 +279,7 @@
           <div class="cf-table-row">
             <div class="cf-comp">Nickel</div>
             <div class="cf-val-main highlight" id="cf-table-ni">30.0%</div>
-            <div class="cf-rule-text">Base 30% @ 1.6% Ni · ±1% per 0.1% Ni</div>
+            <div class="cf-rule-text">Base 30% @ 1.6% Ni · ±0.1% per 0.01% Ni</div>
           </div>
           <div class="cf-table-row">
             <div class="cf-comp">Associated Iron</div>
@@ -392,7 +392,7 @@
       <div class="cf-table-row">
         <div class="cf-comp">Nickel</div>
         <div class="cf-val-main highlight" id="pdf-cf-table-ni">30.0%</div>
-        <div class="cf-rule-text">Base 30% @ 1.6% Ni · ±1% per 0.1% Ni</div>
+        <div class="cf-rule-text">Base 30% @ 1.6% Ni · ±0.1% per 0.01% Ni</div>
       </div>
       <div class="cf-table-row">
         <div class="cf-comp">Associated Iron</div>
@@ -478,19 +478,22 @@
     }
 
     function calcCF(ni) {
-      return 30 + Math.round((ni - 1.6) / 0.1);
+      // New HPM formula: CF Nickel Ore starts at 30.0% at 1.60% Ni.
+      // Every +0.01% Ni adds +0.1 percentage point to CF
+      // (equivalent to +10 percentage points for every +1.00% Ni).
+      return 30 + ((ni - 1.6) * 10);
     }
 
     function updateCF(side) {
       const suffix = side === 'l' ? '_l' : '';
       const ni = parseFloat(document.getElementById('ni' + suffix).value) || 0;
       const cf = calcCF(ni);
-      const diff = Math.round((ni - 1.6) / 0.1);
+      const diff = cf - 30;
       const sign = diff >= 0 ? '+' : '';
-      document.getElementById('cf-val-' + side).textContent = cf + '%';
+      document.getElementById('cf-val-' + side).textContent = cf.toFixed(1) + '%';
       document.getElementById('cf-desc-' + side).textContent =
-        diff !== 0
-          ? 'Ni = ' + ni + '% → 30% ' + sign + diff + '% = ' + cf + '%'
+        Math.abs(diff) > 0.000001
+          ? 'Ni = ' + ni + '% → 30% ' + sign + diff.toFixed(1) + '% = ' + cf.toFixed(1) + '%'
           : 'Ni = ' + ni + '% → basis 1.6% = 30%';
     }
 
@@ -721,7 +724,7 @@
       const resSub = fmt(subtotal) + ' USD';
       const resMc = (1 - mc_frac).toFixed(2) + ' (MC = ' + mc + '%)';
       const resNi = fmt(comp_ni) + ' USD';
-      const brNi = '(' + ni + '/100) × ' + cf_ni_pct + '% × ' + fmt(hma_ni);
+      const brNi = '(' + ni + '/100) × ' + cf_ni_pct.toFixed(1) + '% × ' + fmt(hma_ni);
 
       document.getElementById('res-hpm').textContent = resHpm;
       document.getElementById('res-final').textContent = resFinal;
@@ -768,7 +771,7 @@
       document.getElementById('cf-table-co-rule').textContent = cfCoRule;
 
       let notes = '<div class="alert alert-success"><span class="alert-icon">✓</span>Using HMA <strong>' + selectedMonth + ' (' + selectedPeriod + ')</strong> for the calculation.</div>';
-      notes += '<div class="alert alert-success"><span class="alert-icon">✓</span>Nickel Ore CF = <strong>' + cf_ni_pct + '%</strong> · Basis 1.6% Ni = 30%; each ±0.1% Ni changes by ±1%.</div>';
+      notes += '<div class="alert alert-success"><span class="alert-icon">✓</span>Nickel Ore CF = <strong>' + cf_ni_pct.toFixed(1) + '%</strong> · Basis 1.6% Ni = 30%; setiap perubahan ±0.01% Ni mengubah CF ±0.1%.</div>';
       if (!fe_active) notes += '<div class="alert alert-warning"><span class="alert-icon">⚠</span>Fe = ' + fe + '% melebihi 35% → komponen besi dikecualikan.</div>';
       if (!co_active) notes += '<div class="alert alert-warning"><span class="alert-icon">⚠</span>Co = ' + co + '% di bawah 0.05% → komponen kobalt dikecualikan.</div>';
       if (currentMode === 'simple') notes += '<div class="alert alert-success"><span class="alert-icon">✓</span>Simple Mode is active: expert fields are hidden, but default values are still used in the calculation.</div>';
