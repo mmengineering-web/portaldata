@@ -94,6 +94,24 @@
       font-weight: 900;
       letter-spacing: 0.04em;
       margin-bottom: 24px;
+      overflow: hidden;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .site-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+    .site-badge.has-logo {
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.10);
+    }
+    .site-badge.has-logo .site-badge-fallback {
+      display: none;
     }
     .site-card h2 { color: #0f172a; font-size: 1.7rem; margin: 0 0 8px; }
     .site-card p { color: #64748b; line-height: 1.6; margin: 0 0 24px; }
@@ -209,7 +227,14 @@
   <article class="site-card">
 
     <span class="site-badge">
-      BM
+      <img
+        class="site-logo"
+        src="./Logo/Logo BM.png"
+        alt="BM Site logo"
+        onload="this.parentElement.classList.add('has-logo')"
+        onerror="this.remove()"
+      />
+      <span class="site-badge-fallback">BM</span>
     </span>
 
     <h2>
@@ -251,7 +276,14 @@
   <article class="site-card">
 
     <span class="site-badge">
-      TMS
+      <img
+        class="site-logo"
+        src="./Logo/Logo TMS.png"
+        alt="TMS Site logo"
+        onload="this.parentElement.classList.add('has-logo')"
+        onerror="this.remove()"
+      />
+      <span class="site-badge-fallback">TMS</span>
     </span>
 
     <h2>
@@ -293,7 +325,14 @@
   <article class="site-card">
 
     <span class="site-badge">
-      WKM
+      <img
+        class="site-logo"
+        src="./Logo/Logo WKM.png"
+        alt="WKM Site logo"
+        onload="this.parentElement.classList.add('has-logo')"
+        onerror="this.remove()"
+      />
+      <span class="site-badge-fallback">WKM</span>
     </span>
 
     <h2>
@@ -336,7 +375,14 @@
   <article class="site-card">
 
     <span class="site-badge">
-      CDSM
+      <img
+        class="site-logo"
+        src="./Logo/Logo CDSM.png"
+        alt="CDSM Site logo"
+        onload="this.parentElement.classList.add('has-logo')"
+        onerror="this.remove()"
+      />
+      <span class="site-badge-fallback">CDSM</span>
     </span>
 
     <h2>
@@ -380,7 +426,14 @@
   <article class="site-card">
 
     <span class="site-badge">
-      IBN
+      <img
+        class="site-logo"
+        src="./Logo/Logo IBN.png"
+        alt="IBN Site logo"
+        onload="this.parentElement.classList.add('has-logo')"
+        onerror="this.remove()"
+      />
+      <span class="site-badge-fallback">IBN</span>
     </span>
 
     <h2>
@@ -424,7 +477,14 @@
   <article class="site-card">
 
     <span class="site-badge">
-      TPB
+      <img
+        class="site-logo"
+        src="./Logo/Logo TPB.png"
+        alt="TPB Site logo"
+        onload="this.parentElement.classList.add('has-logo')"
+        onerror="this.remove()"
+      />
+      <span class="site-badge-fallback">TPB</span>
     </span>
 
     <h2>
@@ -468,7 +528,14 @@
   <article class="site-card">
 
     <span class="site-badge">
-      AJB
+      <img
+        class="site-logo"
+        src="./Logo/Logo AJB.png"
+        alt="AJB Site logo"
+        onload="this.parentElement.classList.add('has-logo')"
+        onerror="this.remove()"
+      />
+      <span class="site-badge-fallback">AJB</span>
     </span>
 
     <h2>
@@ -512,7 +579,14 @@
   <article class="site-card">
 
     <span class="site-badge">
-      CDS
+      <img
+        class="site-logo"
+        src="./Logo/Logo CDS.png"
+        alt="CDS Site logo"
+        onload="this.parentElement.classList.add('has-logo')"
+        onerror="this.remove()"
+      />
+      <span class="site-badge-fallback">CDS</span>
     </span>
 
     <h2>
