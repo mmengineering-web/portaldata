@@ -83,7 +83,7 @@
       <div class="calc-hero-text">
         <p class="page-tag">Mining Calculator</p>
         <h1>HPM Nickel<br><strong>Calculator</strong></h1>
-        <p class="hero-sub">Benchmark Price of Nickel Ore Minerals (HPM)<br>New Formula Kepmen ESDM No.144/2026</p>
+        <p class="hero-sub">Benchmark Price of Nickel Ore Minerals (HPM)<br>Formula Kepmen ESDM No.144/2026 · Ps.6 huruf a (CF Bijih Nikel, batas Ni &gt; 1,2%)</p>
       </div>
       <div class="calc-hero-badge">⚖&nbsp; Kepmen ESDM No.144 / 2026 &nbsp;·&nbsp; Berlaku 15 April 2026</div>
     </div>
@@ -106,7 +106,7 @@
     <div class="calc-main">
       <div class="input-column">
         <div class="formula-card stack-card">
-          <div class="section-label">Nickel Ore HPM Formula — New Formula (Kepmen 144/2026)</div>
+          <div class="section-label">Nickel Ore HPM Formula — Kepmen 144/2026</div>
           <div class="formula-text">
             <span class="hl">HPM</span> = [(%Ni × CF<sub>Nickel Ore</sub> × HMA<sub>Nickel</sub>)<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (%Fe × CF<sub>Iron</sub> × HMA<sub>Iron Ore</sub> × 100)<br>
@@ -116,7 +116,7 @@
           <div class="cf-rules">
             <div class="cf-rule">
               <div class="cf-label">Nickel Ore CF</div>
-              <div class="cf-val">30% @1.6%Ni ± 0.1%/0.01%Ni</div>
+              <div class="cf-val">30% @1.6%Ni ± 1%/0.1%Ni · floor di Ni ≤ 1,2%</div>
             </div>
             <div class="cf-rule">
               <div class="cf-label">Associated Iron CF</div>
@@ -180,7 +180,7 @@
                   <div class="field">
                     <label>%Ni (Nickel Content)</label>
                     <input type="number" id="ni_l" value="0.90" step="0.01" min="0" max="10" />
-                    <span class="hint">Limonite Type &lt; 1.6%</span>
+                    <span class="hint">Limonite Type &lt; 1.6% · CF floor berlaku jika Ni ≤ 1,2%</span>
                   </div>
                   <div class="field expert-only">
                     <label>%Fe (Iron Content)</label>
@@ -204,9 +204,9 @@
                 <div class="cf-live">
                   <div>
                     <div class="cf-label-sm">Nickel Ore CF (automatic)</div>
-                    <div class="cf-number" id="cf-val-l">23%</div>
+                    <div class="cf-number" id="cf-val-l">26%</div>
                   </div>
-                  <div class="cf-desc" id="cf-desc-l">Ni = 0.9% → 30% − 7% = 23%</div>
+                  <div class="cf-desc" id="cf-desc-l">Ni = 0.9% ≤ 1,2% (batas regulasi) → CF di-floor pada 26.0% (nilai pada Ni=1,2%)</div>
                 </div>
               </div>
             </div>
@@ -230,7 +230,7 @@
               <div class="hma-meta">
                 <div>
                   <span class="hma-meta-label">Active Selection</span>
-                  <strong id="hma_selected_label">April 2026 (Periode Kedua)</strong>
+                  <strong id="hma_selected_label">September 2026 (Periode Kedua)</strong>
                 </div>
                 <div>
                   <span class="hma-meta-label">Data Source</span>
@@ -241,15 +241,15 @@
               <div class="grid-2">
                 <div class="field expert-only">
                   <label>HMA Nickel</label>
-                  <input type="number" id="hma_ni" value="16933.57" step="0.01" min="0" />
+                  <input type="number" id="hma_ni" value="16698.00" step="0.01" min="0" />
                 </div>
                 <div class="field expert-only">
                   <label>HMA Cobalt</label>
-                  <input type="number" id="hma_co" value="55852.86" step="0.01" min="0" />
+                  <input type="number" id="hma_co" value="52704.33" step="0.01" min="0" />
                 </div>
                 <div class="field expert-only">
                   <label>HMA Iron Ore</label>
-                  <input type="number" id="hma_fe" value="1.58" step="0.01" min="0" />
+                  <input type="number" id="hma_fe" value="1.47" step="0.01" min="0" />
                   <span class="hint">Raw value, multiplied by 100 in the formula</span>
                 </div>
                 <div class="field expert-only">
@@ -262,16 +262,16 @@
               <div class="cf-live">
                 <div>
                   <div class="cf-label-sm">Active HMA Summary</div>
-                  <div class="cf-number" id="hma-compact-ni">Ni 16.933,57</div>
+                  <div class="cf-number" id="hma-compact-ni">Ni 16.698,00</div>
                 </div>
-                <div class="cf-desc" id="hma-compact-desc">Co 55.852,86 · Fe 1,58 · Cr 6,37</div>
+                <div class="cf-desc" id="hma-compact-desc">Co 52.704,33 · Fe 1,47 · Cr 6,37</div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="cf-table-card stack-card">
-          <div class="cf-table-title">Corrective Factors - New HPM Kepmen 144/2026</div>
+          <div class="cf-table-title">Corrective Factors - HPM Kepmen 144/2026</div>
           <div class="cf-table-head">
             <div>Component</div>
             <div>CF</div>
@@ -280,7 +280,7 @@
           <div class="cf-table-row">
             <div class="cf-comp">Nickel</div>
             <div class="cf-val-main highlight" id="cf-table-ni">30.0%</div>
-            <div class="cf-rule-text">Base 30% @ 1.6% Ni · ±0.1% per 0.01% Ni</div>
+            <div class="cf-rule-text">Base 30% @ 1.6% Ni · ±1% per 0.1% Ni · berlaku untuk Ni &gt; 1,2%</div>
           </div>
           <div class="cf-table-row">
             <div class="cf-comp">Associated Iron</div>
@@ -384,7 +384,7 @@
     </div>
 
     <div class="cf-table-card">
-      <div class="cf-table-title">Corrective Factors - New HPM Kepmen 144/2026</div>
+      <div class="cf-table-title">Corrective Factors - HPM Kepmen 144/2026</div>
       <div class="cf-table-head">
         <div>Component</div>
         <div>CF</div>
@@ -393,7 +393,7 @@
       <div class="cf-table-row">
         <div class="cf-comp">Nickel</div>
         <div class="cf-val-main highlight" id="pdf-cf-table-ni">30.0%</div>
-        <div class="cf-rule-text">Base 30% @ 1.6% Ni · ±0.1% per 0.01% Ni</div>
+        <div class="cf-rule-text">Base 30% @ 1.6% Ni · ±1% per 0.1% Ni · berlaku untuk Ni &gt; 1,2%</div>
       </div>
       <div class="cf-table-row">
         <div class="cf-comp">Associated Iron</div>
@@ -426,7 +426,7 @@
       <div class="calc-notes" id="pdf-calc-notes"></div>
     </div>
 
-    <div class="pdf-footer">Based on Kepmen ESDM No.144/2026 · HMA Dataset integrated from spreadsheet.</div>
+    <div class="pdf-footer">Based on Kepmen ESDM No.144/2026 (Ps.6 huruf a — CF Bijih Nikel, batas Ni &gt; 1,2%) · HMA Dataset integrated from spreadsheet.</div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -437,6 +437,11 @@
     let currentMode = 'simple';
 
     const spreadsheetId = '1EybRtMlwmSb8vmDc3FHcIXggqCgqgjyF86xsEYePdFM';
+
+    // Batas minimum kadar Ni menurut Kepmen ESDM No.144/2026 Ps.6 huruf a:
+    // formula linear CF Bijih Nikel hanya berlaku untuk Ni > 1,2%.
+    // Di bawah/di titik 1,2%, CF di-floor pada nilai batas (26%) -- lihat calcCF().
+    const NI_CF_FLOOR = 1.2;
 
     const fallbackHmaDataset = [
       { month: 'Mei 2025', period: 'Periode Pertama', nikel: 15049.23, kobalt: 33274.62, besi: 1.43, krom: 6.37 },
@@ -463,8 +468,11 @@
       { month: 'Maret 2026', period: 'Periode Kedua', nikel: 17329.23, kobalt: 55857.69, besi: 1.44, krom: 6.37 },
       { month: 'April 2026', period: 'Periode Pertama', nikel: 17092.67, kobalt: 55848.00, besi: 1.55, krom: 6.37 },
       { month: 'April 2026', period: 'Periode Kedua', nikel: 16933.57, kobalt: 55852.86, besi: 1.58, krom: 6.37 },
-      { month: 'Juli 2026', period: 'Periode Pertama', nikel: 17593.33, kobalt: 55854, besi: 1.51, krom: 6.37 }
+      { month: 'Juli 2026', period: 'Periode Pertama', nikel: 17593.33, kobalt: 55854, besi: 1.51, krom: 6.37 },
+      { month: 'September 2026', period: 'Periode Kedua', nikel: 16698.00, kobalt: 52704.33, besi: 1.47, krom: 6.37 }
     ];
+    // Catatan data: tidak ada input untuk Agustus 2026 dan September 2026 Periode Pertama —
+    // baris tersebut sengaja tidak diisi (tidak diekstrapolasi) karena datanya tidak diberikan.
 
     let hmaDataset = [...fallbackHmaDataset];
 
@@ -480,10 +488,18 @@
     }
 
     function calcCF(ni) {
-      // New HPM formula: CF Nickel Ore starts at 30.0% at 1.60% Ni.
-      // Every +0.01% Ni adds +0.1 percentage point to CF
-      // (equivalent to +10 percentage points for every +1.00% Ni).
-      return 30 + ((ni - 1.6) * 10);
+      // Kepmen ESDM No.144/2026 Ps.6 huruf a:
+      // CF Bijih Nikel basis 30% pada kadar 1,6% Ni; naik/turun 1% CF setiap
+      // kenaikan/penurunan kadar Ni sebesar 0,1% (setara +0,1 poin% CF / +0,01% Ni).
+      // Ketentuan baru: berlaku dengan batasan kadar Ni > 1,2%.
+      // Interpretasi yang dipakai di kalkulator ini: di bawah/pada 1,2% Ni,
+      // formula linear TIDAK diekstrapolasi lagi — CF di-floor pada nilai batas (26%).
+      const niEffective = Math.max(ni, NI_CF_FLOOR);
+      return 30 + ((niEffective - 1.6) * 10);
+    }
+
+    function isBelowNiFloor(ni) {
+      return ni <= NI_CF_FLOOR;
     }
 
     function updateCF(side) {
@@ -493,10 +509,16 @@
       const diff = cf - 30;
       const sign = diff >= 0 ? '+' : '';
       document.getElementById('cf-val-' + side).textContent = cf.toFixed(1) + '%';
-      document.getElementById('cf-desc-' + side).textContent =
-        Math.abs(diff) > 0.000001
-          ? 'Ni = ' + ni + '% → 30% ' + sign + diff.toFixed(1) + '% = ' + cf.toFixed(1) + '%'
-          : 'Ni = ' + ni + '% → basis 1.6% = 30%';
+
+      if (isBelowNiFloor(ni)) {
+        document.getElementById('cf-desc-' + side).textContent =
+          'Ni = ' + ni + '% ≤ 1,2% (batas regulasi) → CF di-floor pada ' + cf.toFixed(1) + '% (nilai pada Ni=1,2%)';
+      } else {
+        document.getElementById('cf-desc-' + side).textContent =
+          Math.abs(diff) > 0.000001
+            ? 'Ni = ' + ni + '% → 30% ' + sign + diff.toFixed(1) + '% = ' + cf.toFixed(1) + '%'
+            : 'Ni = ' + ni + '% → basis 1.6% = 30%';
+      }
     }
 
     function normalizeMonthPeriodLabel(raw) {
@@ -589,6 +611,8 @@
     }
 
     function pickDefaultSelection() {
+      const hasSep2026P2 = hmaDataset.some(item => item.month === 'September 2026' && item.period === 'Periode Kedua');
+      if (hasSep2026P2) return { month: 'September 2026', period: 'Periode Kedua' };
       const hasApril2026 = hmaDataset.some(item => item.month === 'April 2026' && item.period === 'Periode Kedua');
       if (hasApril2026) return { month: 'April 2026', period: 'Periode Kedua' };
       const latest = hmaDataset[hmaDataset.length - 1];
@@ -710,6 +734,7 @@
       const cf_ni_pct = calcCF(ni);
       const cf_ni = cf_ni_pct / 100;
       const mc_frac = mc / 100;
+      const ni_floor_active = isBelowNiFloor(ni);
 
       const comp_ni = (ni / 100) * cf_ni * hma_ni;
       const fe_active = fe <= 35;
@@ -726,7 +751,7 @@
       const resSub = fmt(subtotal) + ' USD';
       const resMc = (1 - mc_frac).toFixed(2) + ' (MC = ' + mc + '%)';
       const resNi = fmt(comp_ni) + ' USD';
-      const brNi = '(' + ni + '/100) × ' + cf_ni_pct.toFixed(1) + '% × ' + fmt(hma_ni);
+      const brNi = '(' + ni + '/100) × ' + cf_ni_pct.toFixed(1) + '% × ' + fmt(hma_ni) + (ni_floor_active ? ' [CF floor]' : '');
 
       document.getElementById('res-hpm').textContent = resHpm;
       document.getElementById('res-final').textContent = resFinal;
@@ -764,7 +789,7 @@
       const resCr = document.getElementById('res-cr').textContent;
       const brCr = document.getElementById('br-cr-formula').textContent;
 
-      const cfNiDisplay = cf_ni_pct.toFixed(1) + '%';
+      const cfNiDisplay = cf_ni_pct.toFixed(1) + '%' + (ni_floor_active ? ' (floor)' : '');
       const cfFeRule = fe_active ? 'Fixed 30% — Fe ≤ 35%' : 'Excluded — Fe > 35%';
       const cfCoRule = co_active ? 'Fixed 30% — Co ≥ 0.05%' : 'Excluded — Co < 0.05%';
 
@@ -773,7 +798,8 @@
       document.getElementById('cf-table-co-rule').textContent = cfCoRule;
 
       let notes = '<div class="alert alert-success"><span class="alert-icon">✓</span>Using HMA <strong>' + selectedMonth + ' (' + selectedPeriod + ')</strong> for the calculation.</div>';
-      notes += '<div class="alert alert-success"><span class="alert-icon">✓</span>Nickel Ore CF = <strong>' + cf_ni_pct.toFixed(1) + '%</strong> · Basis 1.6% Ni = 30%; setiap perubahan ±0.01% Ni mengubah CF ±0.1%.</div>';
+      notes += '<div class="alert alert-success"><span class="alert-icon">✓</span>Nickel Ore CF = <strong>' + cf_ni_pct.toFixed(1) + '%</strong> · Basis 1.6% Ni = 30%; setiap perubahan ±0.1% Ni mengubah CF ±1% (Kepmen 144/2026 Ps.6 huruf a).</div>';
+      if (ni_floor_active) notes += '<div class="alert alert-warning"><span class="alert-icon">⚠</span>Ni = ' + ni + '% ≤ 1,2% → di bawah batasan regulasi. CF Bijih Nikel di-floor pada nilai batas (CF pada Ni=1,2% = ' + cf_ni_pct.toFixed(1) + '%). Asumsi kalkulator: formula linear tidak diekstrapolasi di bawah 1,2% Ni — verifikasi ulang jika regulator memaksudkan ore ini tidak memenuhi syarat sama sekali.</div>';
       if (!fe_active) notes += '<div class="alert alert-warning"><span class="alert-icon">⚠</span>Fe = ' + fe + '% melebihi 35% → komponen besi dikecualikan.</div>';
       if (!co_active) notes += '<div class="alert alert-warning"><span class="alert-icon">⚠</span>Co = ' + co + '% di bawah 0.05% → komponen kobalt dikecualikan.</div>';
       if (currentMode === 'simple') notes += '<div class="alert alert-success"><span class="alert-icon">✓</span>Simple Mode is active: expert fields are hidden, but default values are still used in the calculation.</div>';
